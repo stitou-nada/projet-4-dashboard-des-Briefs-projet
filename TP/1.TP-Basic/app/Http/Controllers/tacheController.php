@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\tache;
 
 use Illuminate\Http\Request;
- use App\Models\student;
 
-class studentController extends Controller
+class tacheController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class studentController extends Controller
      */
     public function index()
     {
-        return response()->json(student::all());
+        return response()->json(tache::all());
+
     }
 
     /**
@@ -24,7 +25,7 @@ class studentController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -35,10 +36,9 @@ class studentController extends Controller
      */
     public function store(Request $request)
     {
-        student::create([
+        tache::create([
             'Nom' => $request->nom,
             'Prenom' => $request->prenom,
-            'Email' => $request->email,
         ])->save();
     }
 
@@ -73,11 +73,10 @@ class studentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        student::find($id)
+        tache::find($id)
         ->update([
             'Nom' => $request->nom,
-            'Prenom' => $request->prenom,
-            'Email' => $request->email,
+
         ]);
     }
 
@@ -89,7 +88,7 @@ class studentController extends Controller
      */
     public function destroy($id)
     {
-        student::find($id)
+        tache::find($id)
         ->delete();
     }
 }
