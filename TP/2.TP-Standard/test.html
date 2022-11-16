@@ -19,12 +19,34 @@
                 axios.get("http://127.0.0.1:8000/api/tache")
                 .then(res=>{
                       this.setState({
-                        data:res.value
+                        data:res.data
                       })
                 })
             }
+            
+            handleClick=(click)=>{
+                
+
+                this.setState({
+                    data:this.state.nom
+                })
+            }
+            handleChange =(e)=>{
+                    this.setState({
+                        nom:e.target.value   
+                    })
+                    console.log(this.state)
+            }
             render(){
+                
                 return(
+                    <div>
+                        <form>
+                          Nom de la tache :   <input type="text" onChange={this.handleChange} ></input>
+                          <button onClick={this.handleClick}>click</button>
+                          <h3>{this.state.data}</h3>
+                        </form>
+                   
                     <div>
                     <table className="table">
                         <thead>
@@ -43,10 +65,11 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
                 )
             }
       }
-      ReactDOM.render(<App />,document.getElementById('root'));
+      ReactDOM.render(<Tache />,document.getElementById('root'));
     </script>
 </body>
 </html>
