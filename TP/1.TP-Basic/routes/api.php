@@ -20,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('/student',studentController::class);
-Route::resource('/tache',tacheController::class);
+Route::get('/tache',[tacheController::class,'index']);
+Route::post('/store',[tacheController::class,"store"]);
+Route::delete('/delete/{id}',[tacheController::class,"destroy"]);

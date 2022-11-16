@@ -38,7 +38,7 @@ class tacheController extends Controller
     {
         tache::create([
             'Nom' => $request->nom,
-            'Prenom' => $request->prenom,
+            
         ])->save();
     }
 
