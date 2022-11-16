@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/tache',[tacheController::class,'index']);
 Route::post('/store',[tacheController::class,"store"]);
+Route::post('/update/{id}',[tacheController::class,"update"]);
 Route::delete('/delete/{id}',[tacheController::class,"destroy"]);
