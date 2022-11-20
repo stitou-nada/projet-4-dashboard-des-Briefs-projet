@@ -6,9 +6,9 @@ import Tache from "./pages/tache";
 
 function App() {
   return (
-
+     <div>
      <Tache />
-    
+     </div>
   );
 }
 
