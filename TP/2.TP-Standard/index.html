@@ -9,8 +9,7 @@
 <div id="root"></div>
 
 </html>
-<script></script>
-<!-- <script src="./components/table.js" type="text/babel"></script> -->
+
 
 <script type="text/babel">
   class Tache extends React.Component{
@@ -35,7 +34,7 @@
                     this.setState({
                         nom:e.target.value   
                     })
-                    console.log(this.state)
+                   
             }
 
     handleClick=(click)=>{
@@ -69,8 +68,8 @@
           <div className="card-body p-4">
             <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
               <div className="col-12">
-                <input type="text" onChange={this.handleChange} placeholder="Enter nom de tache"></input> 
-                <button onClick={this.handleClick}  className="btn btn-primary"  id="btn"  >Ajouter</button>
+              <input type="text" onChange={this.handleChange} placeholder="Enter nom de tache"></input>
+                <a  onClick={this.handleClick}  className="btn btn-primary"  id="btn"  >Ajouter</a>
 
               </div>
             </form>
