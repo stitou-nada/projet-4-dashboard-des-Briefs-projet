@@ -7,7 +7,7 @@ class Tache extends React.Component{
     state={
         nom:"",
         data:[],
-        showNom:""
+        id:""
 
     }
     componentDidMount(){
@@ -38,14 +38,32 @@ class Tache extends React.Component{
 
                 })
     }
+    handleEdit=async(id)=>{
+        id.preventDefault()
+       await axios.get("http://127.0.0.1:8000/api/edit/"+id)
+        .then(response=>{
+            this.setState({
+                nom:response.data.Nom,
+                id:response.data.id,
+            })
+        })
+        
+    }
+    handleUpdate=(id)=>{
+        axios.put("http://127.0.0.1:8000/api/update/"+id,this.state)
+        .then(response=>{
+            alert('ffff')
+        })
+    }
 
     render(){
         return(
             <div>
             <form>
-                     Ajouter nom de tache <input onChange={this.handleChange}></input>
+                     Ajouter nom de tache <input value={this.state.nom} onChange={this.handleChange}></input>
                     <button onClick={this.handleClick} className="btn btn-primary">Add</button>
-                    <h5>{this.state.showNom}</h5>
+                    <button onClick={()=>this.handleUpdate(this.state.id)} className="btn btn-success">Update</button>
+
             </form>
             
         <table>
@@ -65,7 +83,7 @@ class Tache extends React.Component{
                     <td>{value.Nom}</td>
                     <td>
                         <button class='btn btn-danger' onClick={()=>this.handleDelete(value.id)}>suprimer</button>
-                        <button class='btn btn-success'>edit</button>
+                        <button class='btn btn-success' onClick={()=>this.handleEdit(value.id)}>Modifier</button>
                     </td>
                 </tr>
                 ))}
