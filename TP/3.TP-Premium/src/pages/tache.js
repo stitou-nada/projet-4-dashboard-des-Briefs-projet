@@ -26,7 +26,7 @@ class Tache extends React.Component{
     }
     handleClick =async(btn)=>{
         btn.preventDefault()
-        await axios.post("http://127.0.0.1:8000/api/store",this.state)
+        await axios.post("http://127.0.0.1:8000/api/store",this.state.nom)
         .then(response=>{
              window.location.reload(false)
         })
@@ -39,21 +39,26 @@ class Tache extends React.Component{
                 })
     }
     handleEdit=async(id)=>{
-        id.preventDefault()
+        // id.preventDefault()
+        
        await axios.get("http://127.0.0.1:8000/api/edit/"+id)
         .then(response=>{
             this.setState({
                 nom:response.data.Nom,
-                id:response.data.id,
+                id:response.data.id
             })
         })
         
     }
-    handleUpdate=(id)=>{
+    handleUpdate= async(e)=>{
+         e.preventDefault()
+       const id=this.state.id
         axios.put("http://127.0.0.1:8000/api/update/"+id,this.state)
         .then(response=>{
-            alert('ffff')
+            alert('data has been updated')
         })
+        window.location.reload(false)
+
     }
 
     render(){
@@ -62,7 +67,8 @@ class Tache extends React.Component{
             <form>
                      Ajouter nom de tache <input value={this.state.nom} onChange={this.handleChange}></input>
                     <button onClick={this.handleClick} className="btn btn-primary">Add</button>
-                    <button onClick={()=>this.handleUpdate(this.state.id)} className="btn btn-success">Update</button>
+                    {/* <button onClick={this.handleClick} className="btn btn-primary">up</button> */}
+                    <button onClick={this.handleUpdate} className="btn btn-success">Update</button>
 
             </form>
             
