@@ -53,7 +53,7 @@ class Tache extends React.Component{
     handleUpdate= async(e)=>{
          e.preventDefault()
        const id=this.state.id
-        axios.put("http://127.0.0.1:8000/api/update/"+id,this.state)
+        axios.put("http://127.0.0.1:8000/api/update/"+id,this.state.nom)
         .then(response=>{
             alert('data has been updated')
         })
