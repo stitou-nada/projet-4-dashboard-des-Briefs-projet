@@ -3,12 +3,15 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class Tache extends React.Component{
+constructor(props){
 
-   state ={
+super(props)
+   this.state ={
          data:[],
          nom:'',
          id:''
-         
+        }
+
          
    }
     componentDidMount(){
@@ -61,12 +64,7 @@ class Tache extends React.Component{
          }
 render(){
         return(
-            <section className="vh-100" style={{backgroundColor: '#eee'}}>
-            <div className="container py-5 h-100">
-              <div className="row d-flex justify-content-center align-items-center h-100">
-                <div className="col col-lg-9 col-xl-7">
-                  <div className="card rounded-3">
-                    <div className="card-body p-4">
+            <div className="card-body p-4">
                       <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                         <div className="col-12">
                         <input value={this.state.nom}  onChange={this.handleChange} placeholder='Enter nom du tache' />
@@ -101,11 +99,6 @@ render(){
             </tbody>
         </table>
         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      </section>
         )
     }
 }
