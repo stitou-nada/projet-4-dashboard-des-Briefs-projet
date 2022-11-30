@@ -1,66 +1,65 @@
 import React from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
-import "style.css";
+
 class Tache extends React.Component{
 
-    state={
-        nom:"",
-        data:[],
-        id:""
-
-    }
+   state ={
+         data:[],
+         nom:'',
+         id:''
+         
+         
+   }
     componentDidMount(){
-        
         axios.get("http://127.0.0.1:8000/api/tache")
-        .then(response=>{
+        .then(res=>{
             this.setState({
-             data:response.data
-            })
+                data:res.data
         })
+    })
     }
-    handleChange=(e)=>{
-       this.setState({
-               nom:e.target.value
-       })  
-    }
-    handleClick =async(btn)=>{
-        btn.preventDefault()
-        await axios.post("http://127.0.0.1:8000/api/store",this.state.nom)
-        .then(response=>{
-             window.location.reload(false)
-        })
-    }
-    handleDelete=(id)=>{
-                axios.delete("http://127.0.0.1:8000/api/delete/"+id)
-                .then(response=>{
-                    window.location.reload(false)
 
-                })
-    }
-    handleEdit=async(id)=>{
-        // id.preventDefault()
+    handleChange = (e)=>{
+        this.setState({
+            nom:e.target.value
+        })
         
-       await axios.get("http://127.0.0.1:8000/api/edit/"+id)
-        .then(response=>{
+    }
+    handleClick=(e)=>{
+        e.preventDefault()
+       axios.post("http://127.0.0.1:8000/api/store",this.state)
+       .then(res=>{
+            
+            window.location.reload()
+       })
+        }
+    handleDelete= (id)=>{
+        axios.delete("http://127.0.0.1:8000/api/delete/"+id)
+        .then(res=>{
+            window.location.reload()
+        })
+    }
+    handleEdit=(id)=>{
+        axios.get("http://127.0.0.1:8000/api/edit/"+id)
+        .then(res=>{
             this.setState({
-                nom:response.data.nom,
-                id:response.data.id
+                nom:res.data.Nom ,
+                id:res.data.id
             })
         })
     }
-    handleUpdate= async(e)=>{
-         e.preventDefault()
-       const id=this.state.id
-        axios.put("http://127.0.0.1:8000/api/update/"+id,this.state.nom)
-        .then(response=>{
-            alert('data has been updated')
+    handleUpdate=(e)=>{
+        e.preventDefault()
+
+        const id = this.state.id
+        axios.put("http://127.0.0.1:8000/api/update/"+id,this.state)
+        .then(res=>{
+             
+             window.location.reload()
         })
-        window.location.reload(false)
-
-    }
-
-    render(){
+         }
+render(){
         return(
             <section className="vh-100" style={{backgroundColor: '#eee'}}>
             <div className="container py-5 h-100">
@@ -70,10 +69,11 @@ class Tache extends React.Component{
                     <div className="card-body p-4">
                       <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                         <div className="col-12">
-                      <input value={this.state.nom} onChange={this.handleChange} placeholder="Enter nom de tache"></input>
-                    <button onClick={this.handleClick} className="btn btn-primary">Add</button>
-                    {/* <button onClick={this.handleClick} className="btn btn-primary">up</button> */}
-                    <button onClick={this.handleUpdate} className="btn btn-success">Update</button>
+                        <input value={this.state.nom}  onChange={this.handleChange} placeholder='Enter nom du tache' />
+                        
+                        <button  onClick={this.handleClick} className='btn btn-primary' >Ajouter</button>
+                        <button  onClick={this.handleUpdate} className='btn btn-primary' >Update</button>
+                       
                     </div>
 
             </form>
@@ -87,18 +87,17 @@ class Tache extends React.Component{
                 </tr>
             </thead>
             <tbody>
-                {this.state.data.map((value)=>(
-
-                
+               {this.state.data.map((value)=>
                 <tr key={value.id}>
-                    <td scope="row">{value.id}</td>
+                    <td>{value.id}</td>
                     <td>{value.Nom}</td>
-                    <td style={{width: '216px'}}>
-                        <button class='btn btn-danger' onClick={()=>this.handleDelete(value.id)}>suprimer</button>
-                        <button class='btn btn-success' onClick={()=>this.handleEdit(value.id)}>Modifier</button>
+                    <td>
+                        <button onClick={this.handleEdit.bind(this,value.id)} className='btn btn-warning'>Edit</button>
+                        <button onClick={this.handleDelete.bind(this,value.id)} className='btn btn-danger'>Suprimer</button>
                     </td>
                 </tr>
-                ))}
+               )} 
+             
             </tbody>
         </table>
         </div>
@@ -106,7 +105,7 @@ class Tache extends React.Component{
       </div>
     </div>
   </div>
-</section>
+      </section>
         )
     }
 }
