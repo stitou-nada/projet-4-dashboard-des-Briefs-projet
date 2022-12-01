@@ -6,12 +6,15 @@ import { Form } from 'react-bootstrap';
 class Tache extends React.Component{
    
 
-    state={
-        data:[],
-        nom:'',
-        id:''
-    }
+    constructor(props){
 
+        super(props)
+        this.state={
+          data:[],
+          nom:'',
+          id:''
+        }
+    }
     componentDidMount(){
         axios.get("http://127.0.0.1:8000/api/tache")
         .then(res=>{
