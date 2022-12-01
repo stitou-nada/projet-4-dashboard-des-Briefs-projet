@@ -40,6 +40,7 @@ super(props)
     handleDelete= (id)=>{
         axios.delete("http://127.0.0.1:8000/api/delete/"+id)
         .then(res=>{
+            alert(" suprimer")
             window.location.reload()
         })
     }
