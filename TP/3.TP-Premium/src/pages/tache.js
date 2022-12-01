@@ -3,17 +3,15 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class Tache extends React.Component{
-constructor(props){
 
-super(props)
-   this.state ={
+   state ={
          data:[],
          nom:'',
          id:''
         }
 
          
-   }
+   
     componentDidMount(){
         axios.get("http://127.0.0.1:8000/api/tache")
         .then(res=>{
