@@ -43,6 +43,10 @@ class Tache extends React.Component{
         })
     }
     handleEdit=(id)=>{
+        let btnAdd= document.querySelector("#btnAdd");
+        let btnUpdate = document.querySelector('#btnUpdate'); 
+        btnAdd.style.display = "none"
+        btnUpdate.style.display = "inline"
         axios.get("http://127.0.0.1:8000/api/edit/"+id)
         .then(res=>{
             this.setState({
@@ -68,8 +72,8 @@ render(){
                         <div className="col-12">
                         <input value={this.state.nom}  onChange={this.handleChange} placeholder='Enter nom du tache' />
                         
-                        <button  onClick={this.handleClick} className='btn btn-primary' >Ajouter</button>
-                        <button  onClick={this.handleUpdate} className='btn btn-primary' >Update</button>
+                        <button  onClick={this.handleClick} className='btn btn-primary'id="btnAdd" >Ajouter</button>
+                        <button  onClick={this.handleUpdate} className='btn btn-warning'id="btnUpdate" style={{display:'none'}} >Update</button>
                        
                     </div>
 
