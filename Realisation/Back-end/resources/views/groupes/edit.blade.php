@@ -1,71 +1,63 @@
 
-
 @extends('master')
 @section('content')
 
   <div class="main-panel">
 
     <div class="content">
-        <h1 class="titre" > Ajouter formateur </h1>
+        <h1 class="titre" >Modifier groupe </h1>
       <div class="row">
         <div class="col-md-11">
           <div class="card">
 
             <div class="card-body">
-              <form  action="{{route('formateur.update',$formateur->id)}}"method="POST" >
+              <form  action="{{route('groupe.update',$groupe->groupeID)}}"method="POST" >
                 @csrf
-                @method("PUT")
+               
                 <div class="row">
                   <div class="col-md-3 pr-md-1">
                     <div class="form-group">
                       <label>Nom </label>
-                      <input type="text" class="form-control" placeholder="nom " name="nom" value="{{$formateur->Nom_formateur}}">
+                      <input type="text" class="form-control"  value={{$groupe->Nom_groupe}} name="nom" >
                     </div>
                   </div>
                   <div class="col-md-3 pr-md-1">
-                    <div class="form-group">
-                      <label>Prenom </label>
-                      <input type="text" class="form-control" placeholder="prenom " name="prenom" value="{{$formateur->Prenom_formateur}}" >
-                    </div>
+                    <label for="cars">Année scolaire:</label>
+
+                          <select name="annee">
+                            <option >{{$groupe->Annee_scolaire}}</option>
+                            @foreach ($annee as $valuee)
+                                
+                           
+                            <option value={{$valuee->id}} >{{$valuee->Annee_scolaire}}</option>
+                            @endforeach
+                          </select>
                   </div>
-                  <div class="col-md-5 pr-md-1">
-                    <div class="form-group">
-                      <label>Email </label>
-                      <input type="text" class="form-control" placeholder="email " name="email" value="{{$formateur->Email_formateur}}" >
-                    </div>
+                  <div class="col-md-3 pr-md-1">
+                    <label for="cars">formateur</label>
+
+                          <select name="formateur">
+                            {{$groupe->Nom_formateur}} {{$groupe->Prenom_formateur}}
+                            @foreach ($formateur as $valuee)
+                                
+                           
+                            <option value={{$valuee->id}} >{{$valuee->Nom_formateur}} {{$valuee->Prenom_formateur}} </option>
+                            @endforeach
+                          </select>
                   </div>
+                  
                   
                 </div>
                 
-                <div class="row">
-                  <div class="col-md-3 pr-md-1">
-                      
-                      <div class="form-group">
-                        <label>Phone</label>
-                        <input type="number" class="form-control" name="phone" value="{{$formateur->Phone}}">
-                      </div>
-                  </div>
-                     <div class="col-md-5 pr-md-1">
-                    <div class="form-group">
-                      <label>Address</label>
-                      <input type="text" class="form-control" name="adress" value="{{$formateur->Adress}}">
-                    </div>
-                     </div>
-                    <div class="col-md-2 pr-md-1">
-                    <div class="form-group">
-                      <label>CIN</label>
-                      <input type="text" class="form-control" name="cin" value="{{$formateur->CIN}}">
-                    </div>
-                    </div>
-                  
-                </div>
+                
+                 
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Editer</button>
               </div>
             </form>
           </div>
-          <a href="{{route('formateur.index')}}" class="btn btn-seccess">retourn</a>
+          <a href="{{route('groupe.index')}}" class="btn btn-seccess">retourn</a>
         </div>
 
       </div>

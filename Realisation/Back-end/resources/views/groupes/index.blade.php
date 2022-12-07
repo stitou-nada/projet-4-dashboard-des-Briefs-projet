@@ -40,14 +40,14 @@
                   <tbody id="tbody">
                     @foreach ($groupe as $value)
                     <tr>
-                        <td>{{$value->id}}</td>
+                        <td>{{$value->groupeID}}</td>
                         <td>{{$value->Nom_groupe}}</td>
                         <td>{{$value->Annee_scolaire}}</td>
                         <td>{{$value->Nom_formateur}}</td>
                         
 
                       <td class="text-center">
-                        <a  href="{{route("groupe.edit",$value->id)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
+                        <a  href="{{route("groupe.edit",$value->groupeID)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
                         <form  action="{{route("groupe.destroy",$value->id)}}" method="POST">
                           @csrf
                           @method('DELETE')

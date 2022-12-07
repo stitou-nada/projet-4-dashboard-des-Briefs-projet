@@ -16,7 +16,7 @@ class groupeController extends Controller
      */
     public function index()
     {
-        $groupe =groupe::select('*')
+        $groupe =groupe::select('*','groupes.id as groupeID')
         ->join("annee_formation","groupes.Annee_formation_id","annee_formation.id")
         ->join("formateur","groupes.formateur_id","formateur.id")
         ->get();
@@ -72,8 +72,16 @@ class groupeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    { 
+        $groupe = groupe::select('*','annee_formation.id as anneeID','formateur.id as formateurID','groupes.id as groupeID')
+        ->where('groupes.id',$id)
+        ->join("annee_formation","groupes.Annee_formation_id","annee_formation.id")
+        ->join("formateur","groupes.formateur_id","formateur.id")
+        ->get();
+        
+        $formateur = formateur::all();
+        $annee = Anne::all();
+        return view('groupes.edit',compact('groupe','formateur','annee'));
     }
 
     /**
@@ -85,7 +93,14 @@ class groupeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        groupe::finf($id)
+        ->update([
+            "Nom_groupe"=>$request->nom,
+            "Annee_formation_id"=>$request->annee,
+            "Formateur_id"=>$request->formateur,
+            
+          ]);
+          return redirect('groupe');
     }
 
     /**
