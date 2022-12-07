@@ -6,12 +6,12 @@
 
     <!-- table -->
     <div class="content">
-        <h1 class="titre" > Gestion Formateur </h1>
+        <h1 class="titre" > Gestion du groupe </h1>
       <div class="row">
         <div class="col-md-12">
           <div class="card ">
             <div class="card-header">
-              <a  href="{{route("formateur.create")}}" class="btn btn-primary">Ajouter un formateur</a>
+              <a  href="{{route("groupe.create")}}" class="btn btn-primary">Ajouter groupe</a>
             </div>
             <div class="card-body">
                 {{-- search  --}}
@@ -25,13 +25,11 @@
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">
                     <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Adress</th>
-                        <th>CIN</th>
+                        <th>id</th>
+                        <th>Nom groupe</th>
+                        <th>Annee formation </th>
+                        <th>Formateur</th>
+                       
 
                       <th class="text-center">
                         Action
@@ -40,19 +38,17 @@
                     </tr>
                   </thead>
                   <tbody id="tbody">
-                    @foreach ($formateur as $value)
+                    @foreach ($groupe as $value)
                     <tr>
                         <td>{{$value->id}}</td>
+                        <td>{{$value->Nom_groupe}}</td>
+                        <td>{{$value->Annee_scolaire}}</td>
                         <td>{{$value->Nom_formateur}}</td>
-                        <td>{{$value->Prenom_formateur}}</td>
-                        <td>{{$value->Email_formateur}}</td>
-                        <td>{{$value->Phone}}</td>
-                        <td>{{$value->Adress}}</td>
-                        <td>{{$value->CIN}}</td>
+                        
 
                       <td class="text-center">
-                        <a  href="{{route("formateur.edit",$value->id)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
-                        <form  action="{{route("formateur.destroy",$value->id)}}" method="POST">
+                        <a  href="{{route("groupe.edit",$value->id)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
+                        <form  action="{{route("groupe.destroy",$value->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
                          <button style=" all: unset; cursor: pointer; font-size:25px"><i class="fa fa-trash"></i></button>

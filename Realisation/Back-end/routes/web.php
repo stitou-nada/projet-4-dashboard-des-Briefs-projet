@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\formateurController;
+use App\Http\Controllers\groupeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/formateur',formateurController::class);
+Route::resource('/groupe',groupeController::class);

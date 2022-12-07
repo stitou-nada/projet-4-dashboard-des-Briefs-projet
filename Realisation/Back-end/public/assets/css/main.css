@@ -1,0 +1,54 @@
+.td-btn{
+
+    display: flex !important;
+    justify-content:space-evenly !important;
+    /* width: 314px !important; */
+}
+
+
+
+.td-btn-briefs{
+display: flex;
+    justify-content: space-evenly;
+}
+ .titre{
+    color: #ffffff;
+    padding-left: 474px;
+    font-size: 48px;
+ }
+
+
+ .row{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+    justify-content: space-around !important;
+ }
+
+
+ .search-box{
+    width: 227px !important;
+    padding-left: 30p !important;
+    margin-left: 888px !important;
+    margin-top: -39px !important;
+
+    border-color: #ba54f5 !important;
+}
+ .search-box-promotion{
+    width: 227px !important;
+    margin-left: 826px;
+    margin-top: -51px !important;
+    border-color: #ba54f5 !important;
+}
+ .searchInput{
+    border-color: #ba54f5;
+}
+
+.searchInput::placeholder {
+   color: #e4dce9;
+}
+
+
+
+
