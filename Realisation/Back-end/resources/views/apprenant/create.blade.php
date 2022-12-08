@@ -64,6 +64,18 @@
                     </div>
                   
                 </div>
+                <div class="row">
+                  <div class="col-md-3 pr-md-1">
+                      
+                      <div class="form-group">
+                        <label >Image</label>
+                        <input class="form-control"   type="file" name="image">
+                      </div>
+                  </div>
+                 
+                  
+                </div>
+                 
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Ajouter</button>

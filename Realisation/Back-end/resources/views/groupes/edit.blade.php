@@ -13,7 +13,7 @@
                   
              
             <div class="card-body">
-              <form  action="{{route('groupe.update',$groupe->groupeID)}}"method="POST" >
+               <form  action="{{route('groupe.update',$groupe->groupeID)}}"method="POST" >
                 @csrf
                @method('PUT')
                 <div class="row">
@@ -48,6 +48,22 @@
                           </select>
                   </div>
                   
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-3 pr-md-1">
+                    <div class=" form-group">
+                      <img src="{{asset('assets/img/groupe')}}/{{$groupe ->Logo}}"
+                          class="tm-product-img-dummy mx-auto" alt="">
+                  </div>
+                  <div class="form-group">
+                        <input class="btn btn-primary btn-block mx-auto col-lg-6"
+                        type="hidden" name="img" value="{{$groupe->Logo}}"/>
+                        <label for="x_card_code" class="control-label mb-1">Logo</label>
+                        <input id="x_card_code"   type="file" name="logo">
+                      </div>
+                  </div>
+                 
                   
                 </div>
                 

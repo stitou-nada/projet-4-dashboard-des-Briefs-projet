@@ -47,6 +47,7 @@ class groupeController extends Controller
             "Nom_groupe"=>$request->nom,
             "Annee_formation_id"=>$request->annee,
             "Formateur_id"=>$request->formateur,
+            "Logo"=>$request->logo,
             
           ])->save();
           return redirect('groupe');
@@ -97,7 +98,7 @@ class groupeController extends Controller
             "Nom_groupe"=>$request->nom,
             "Annee_formation_id"=>$request->annee,
             "Formateur_id"=>$request->formateur,
-            
+            "Logo"=>$request->logo,
           ]);
           return redirect('groupe');
     }

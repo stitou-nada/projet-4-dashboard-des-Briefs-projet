@@ -15,6 +15,7 @@ class groupe extends Model
         "Nom_groupe",
         "Annee_formation_id",
         "Formateur_id",
+        "Logo"
         
     ];
    

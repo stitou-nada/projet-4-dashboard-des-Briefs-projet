@@ -16,17 +16,18 @@
           </a>
         </li>
         <li class="active ">
+          <a href="{{route('groupe.index')}}">
+            <i class="tim-icons icon-chart-pie-36"></i>
+            <p style="font-size: 14px">Gestion Group</p>
+          </a>
+        </li>
+        <li class="active ">
           <a href="{{route('apprenant.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
             <p style="font-size: 14px";>Gestion Apprenant</p>
           </a>
         </li>
-        <li class="active ">
-          <a href="">
-            <i class="tim-icons icon-chart-pie-36"></i>
-            <p style="font-size: 14px">Gestion Group</p>
-          </a>
-        </li>
+        
       </ul>
     </div>
   </div>

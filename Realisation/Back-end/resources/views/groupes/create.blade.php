@@ -48,6 +48,17 @@
                   
                   
                 </div>
+                <div class="row">
+                  <div class="col-md-3 pr-md-1">
+                      
+                      <div class="form-group">
+                        <label >Image</label>
+                        <input class="form-control"   type="file" name="logo">
+                      </div>
+                  </div>
+                 
+                  
+                </div>
                 
                 
                  

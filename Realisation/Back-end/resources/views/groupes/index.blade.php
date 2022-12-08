@@ -25,6 +25,7 @@
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">
                     <tr>
+                        <th>Logo</th>
                         <th>id</th>
                         <th>Nom groupe</th>
                         <th>Annee formation </th>
@@ -40,6 +41,14 @@
                   <tbody id="tbody">
                     @foreach ($groupe as $value)
                     <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src="{{asset('assets/img/groupe')}}/{{$value ->Logo}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                          </div>
+                          
+                        </div>
+                      </td>
                         <td>{{$value->groupeID}}</td>
                         <td>{{$value->Nom_groupe}}</td>
                         <td>{{$value->Annee_scolaire}}</td>
@@ -48,7 +57,7 @@
 
                       <td class="text-center">
                         <a  href="{{route("groupe.edit",$value->groupeID)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
-                        <form  action="{{route("groupe.destroy",$value->id)}}" method="POST">
+                        <form  action="{{route("groupe.destroy",$value->groupeID)}}" method="POST">
                           @csrf
                           @method('DELETE')
                          <button style=" all: unset; cursor: pointer; font-size:25px"><i class="fa fa-trash"></i></button>

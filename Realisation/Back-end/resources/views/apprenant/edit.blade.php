@@ -67,10 +67,15 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3 pr-md-1">
-                      
-                      <div class="form-group">
-                        <label>Image</label>
-                        <input type="number" class="form-control" name="phone" value="{{$apprenant->Phone}}">
+                    <div class=" form-group">
+                      <img src="{{asset('assets/img/apprenant')}}/{{$apprenant ->Image}}"
+                          class="tm-product-img-dummy mx-auto" alt="">
+                  </div>
+                  <div class="form-group">
+                        <input class="btn btn-primary btn-block mx-auto col-lg-6"
+                        type="hidden" name="img" value="{{$apprenant ->Image}}"/>
+                        <label for="x_card_code" class="control-label mb-1">Image</label>
+                        <input id="x_card_code"   type="file" name="image">
                       </div>
                   </div>
                  

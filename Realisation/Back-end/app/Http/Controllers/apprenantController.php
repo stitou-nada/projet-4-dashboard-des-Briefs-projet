@@ -44,6 +44,7 @@ class apprenantController extends Controller
             "Adress"=>$request->adress,
             "CIN"=>$request->cin,
             "Date_naissance"=>$request->date_naissance,
+            "Image"=>$request->image,
 
           ])->save();
           return redirect('apprenant');
@@ -90,6 +91,8 @@ class apprenantController extends Controller
             "Adress"=>$request->adress,
             "CIN"=>$request->cin,
             "Date_naissance"=>$request->date_naissance,
+            "Image"=>$request->image,
+
           ]);
           return redirect('apprenant');
     }
