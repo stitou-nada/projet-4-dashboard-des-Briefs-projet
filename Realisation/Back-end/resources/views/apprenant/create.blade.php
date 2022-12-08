@@ -5,13 +5,13 @@
   <div class="main-panel">
 
     <div class="content">
-        <h1 class="titre" > Ajouter formateur </h1>
+        <h1 class="titre" > Ajouter apprenant </h1>
       <div class="row">
         <div class="col-md-11">
           <div class="card">
 
             <div class="card-body">
-              <form  action="{{route('formateur.store')}}"method="POST" >
+              <form  action="{{route('apprenant.store')}}"method="POST" >
                 @csrf
                
                 <div class="row">
@@ -41,7 +41,7 @@
                       
                       <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" class="form-control" name="phone">
+                        <input type="number" class="form-control" name="phone" min="0" max="10" step="0.25">
                       </div>
                   </div>
                      <div class="col-md-5 pr-md-1">
@@ -56,6 +56,12 @@
                       <input type="text" class="form-control" name="cin" >
                     </div>
                     </div>
+                    <div class="col-md-2 pr-md-1">
+                    <div class="form-group">
+                      <label>Date de naissance</label>
+                      <input type="date" class="form-control" name="date_naissance" >
+                    </div>
+                    </div>
                   
                 </div>
               </div>
@@ -64,7 +70,7 @@
               </div>
             </form>
           </div>
-          <a href="{{route('formateur.index')}}" class="btn btn-seccess">retourn</a>
+          <a href="{{route('apprenant.index')}}" class="btn btn-seccess">retourn</a>
         </div>
 
       </div>

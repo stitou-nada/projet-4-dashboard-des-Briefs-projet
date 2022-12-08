@@ -78,7 +78,6 @@ class groupeController extends Controller
         ->join("annee_formation","groupes.Annee_formation_id","annee_formation.id")
         ->join("formateur","groupes.formateur_id","formateur.id")
         ->get();
-        
         $formateur = formateur::all();
         $annee = Anne::all();
         return view('groupes.edit',compact('groupe','formateur','annee'));
@@ -93,7 +92,7 @@ class groupeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        groupe::finf($id)
+        groupe::find($id)
         ->update([
             "Nom_groupe"=>$request->nom,
             "Annee_formation_id"=>$request->annee,
@@ -111,6 +110,8 @@ class groupeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        groupe::find($id)
+        ->delete();
+        return redirect('groupe');
     }
 }

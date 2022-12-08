@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\apprenantController;
 use App\Http\Controllers\formateurController;
 use App\Http\Controllers\groupeController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::get('/', function () {
 });
 Route::resource('/formateur',formateurController::class);
 Route::resource('/groupe',groupeController::class);
+Route::resource('/apprenant',apprenantController::class);

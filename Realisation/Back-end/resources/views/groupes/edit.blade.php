@@ -9,11 +9,13 @@
       <div class="row">
         <div class="col-md-11">
           <div class="card">
-
+              @foreach ($groupe as $groupe)
+                  
+             
             <div class="card-body">
               <form  action="{{route('groupe.update',$groupe->groupeID)}}"method="POST" >
                 @csrf
-               
+               @method('PUT')
                 <div class="row">
                   <div class="col-md-3 pr-md-1">
                     <div class="form-group">
@@ -22,10 +24,10 @@
                     </div>
                   </div>
                   <div class="col-md-3 pr-md-1">
-                    <label for="cars">Année scolaire:</label>
+                    <label for="cars">Année scolaire</label>
 
                           <select name="annee">
-                            <option >{{$groupe->Annee_scolaire}}</option>
+                            <option  selected disabled value={{$groupe->anneeID}} >{{$groupe->Annee_scolaire}}</option>
                             @foreach ($annee as $valuee)
                                 
                            
@@ -37,7 +39,7 @@
                     <label for="cars">formateur</label>
 
                           <select name="formateur">
-                            {{$groupe->Nom_formateur}} {{$groupe->Prenom_formateur}}
+                          <option selected disabled value={{$groupe->formateurID}} > {{$groupe->Nom_formateur}} {{$groupe->Prenom_formateur}}</option>
                             @foreach ($formateur as $valuee)
                                 
                            
@@ -49,7 +51,7 @@
                   
                 </div>
                 
-                
+                @endforeach
                  
               </div>
               <div class="card-footer">

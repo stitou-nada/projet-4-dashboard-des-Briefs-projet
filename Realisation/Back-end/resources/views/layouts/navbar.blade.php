@@ -16,9 +16,9 @@
           </a>
         </li>
         <li class="active ">
-          <a href="{{route('groupe.index')}}">
+          <a href="{{route('apprenant.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
-            <p style="font-size: 14px";>Gestion Groupe</p>
+            <p style="font-size: 14px";>Gestion Apprenant</p>
           </a>
         </li>
         <li class="active ">

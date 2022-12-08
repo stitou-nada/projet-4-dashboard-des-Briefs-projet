@@ -6,12 +6,12 @@
 
     <!-- table -->
     <div class="content">
-        <h1 class="titre" > Gestion du groupe </h1>
+        <h1 class="titre" > Gestion apprenant </h1>
       <div class="row">
         <div class="col-md-12">
           <div class="card ">
             <div class="card-header">
-              <a  href="{{route("groupe.create")}}" class="btn btn-primary">Ajouter groupe</a>
+              <a  href="{{route("apprenant.create")}}" class="btn btn-primary">Ajouter un apprenant</a>
             </div>
             <div class="card-body">
                 {{-- search  --}}
@@ -25,11 +25,14 @@
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">
                     <tr>
-                        <th>id</th>
-                        <th>Nom groupe</th>
-                        <th>Annee formation </th>
-                        <th>Formateur</th>
-                       
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Adress</th>
+                        <th>CIN</th>
+                        <th>Date naissance</th>
 
                       <th class="text-center">
                         Action
@@ -38,17 +41,20 @@
                     </tr>
                   </thead>
                   <tbody id="tbody">
-                    @foreach ($groupe as $value)
+                    @foreach ($apprenant as $value)
                     <tr>
-                        <td>{{$value->groupeID}}</td>
-                        <td>{{$value->Nom_groupe}}</td>
-                        <td>{{$value->Annee_scolaire}}</td>
-                        <td>{{$value->Nom_formateur}} {{$value->Prenom_formateur}}</td>
-                        
+                        <td>{{$value->id}}</td>
+                        <td>{{$value->Nom}}</td>
+                        <td>{{$value->Prenom}}</td>
+                        <td>{{$value->Email}}</td>
+                        <td>{{$value->Phone}}</td>
+                        <td>{{$value->Adress}}</td>
+                        <td>{{$value->CIN}}</td>
+                        <td>{{$value->Date_naissance}}</td>
 
                       <td class="text-center">
-                        <a  href="{{route("groupe.edit",$value->groupeID)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
-                        <form  action="{{route("groupe.destroy",$value->id)}}" method="POST">
+                        <a  href="{{route("apprenant.edit",$value->id)}}"  style="font-size:25px"><i class="fa fa-edit"></i></a>
+                        <form  action="{{route("apprenant.destroy",$value->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
                          <button style=" all: unset; cursor: pointer; font-size:25px"><i class="fa fa-trash"></i></button>
