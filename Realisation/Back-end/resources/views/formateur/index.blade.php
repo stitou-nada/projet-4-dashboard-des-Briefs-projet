@@ -25,6 +25,7 @@
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">
                     <tr>
+                        <th>Image</th>
                         <th>Id</th>
                         <th>Nom</th>
                         <th>Prenom</th>
@@ -42,6 +43,14 @@
                   <tbody id="tbody">
                     @foreach ($formateur as $value)
                     <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src="{{asset('assets/img/formateur')}}/{{$value ->Image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                          </div>
+                          
+                        </div>
+                      </td>
                         <td>{{$value->id}}</td>
                         <td>{{$value->Nom_formateur}}</td>
                         <td>{{$value->Prenom_formateur}}</td>

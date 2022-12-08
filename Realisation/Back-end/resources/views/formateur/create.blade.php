@@ -41,7 +41,7 @@
                       
                       <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" class="form-control" name="phone">
+                        <input type="number" class="form-control" name="phone" min="0" max="10" step="0.25">
                       </div>
                   </div>
                      <div class="col-md-5 pr-md-1">
@@ -56,6 +56,17 @@
                       <input type="text" class="form-control" name="cin" >
                     </div>
                     </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-3 pr-md-1">
+                      
+                      <div class="form-group">
+                        <label >Image</label>
+                        <input class="form-control"   type="file" name="image">
+                      </div>
+                  </div>
+                 
                   
                 </div>
               </div>

@@ -27,7 +27,7 @@
                     <label for="cars">Année scolaire</label>
 
                           <select name="annee">
-                            <option  selected disabled value={{$groupe->anneeID}} >{{$groupe->Annee_scolaire}}</option>
+                            <option  value={{$groupe->anneeID}} >{{$groupe->Annee_scolaire}}</option>
                             @foreach ($annee as $valuee)
                                 
                            
@@ -39,7 +39,7 @@
                     <label for="cars">formateur</label>
 
                           <select name="formateur">
-                          <option selected disabled value={{$groupe->formateurID}} > {{$groupe->Nom_formateur}} {{$groupe->Prenom_formateur}}</option>
+                          <option  value={{$groupe->formateurID}} > {{$groupe->Nom_formateur}} {{$groupe->Prenom_formateur}}</option>
                             @foreach ($formateur as $valuee)
                                 
                            

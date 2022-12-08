@@ -44,6 +44,7 @@ class formateurController extends Controller
         "Phone"=>$request->phone,
         "Adress"=>$request->adress,
         "CIN"=>$request->cin,
+        "Image"=>$request->image,
       ])->save();
       return redirect('formateur');
     }
@@ -88,6 +89,7 @@ class formateurController extends Controller
             "Phone"=>$request->phone,
             "Adress"=>$request->adress,
             "CIN"=>$request->cin,
+            "Image"=>$request->image,
           ]);
           return redirect('formateur');
     }

@@ -52,7 +52,8 @@
                         <td>{{$value->groupeID}}</td>
                         <td>{{$value->Nom_groupe}}</td>
                         <td>{{$value->Annee_scolaire}}</td>
-                        <td>{{$value->Nom_formateur}} {{$value->Prenom_formateur}}</td>
+                        <td>
+                          {{$value->Nom_formateur}} {{$value->Prenom_formateur}}</td>
                         
 
                       <td class="text-center">
