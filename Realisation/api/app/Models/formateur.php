@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class formateur extends Model
 {
     use HasFactory;
-    protected $table = "formateur";
-    public $timestamps= false;
-    protected $fillable = [
+        protected $table = "formateur";
+        public $timestamps= false;
+        protected $fillable = [
 
-        "Nom_formateur",
-        "Prenom_formateur",
-        "Email_formateur",
-        "Phone",
-        "Adress",
-        "CIN",
-        "Image"
-    ];
+            "Nom_formateur",
+            "Prenom_formateur",
+            "Email_formateur",
+            "Phone",
+            "Adress",
+            "CIN",
+            "Image"
+        ];
 }
