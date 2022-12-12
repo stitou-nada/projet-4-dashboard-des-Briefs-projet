@@ -46,9 +46,9 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{asset('assets/img/formateur')}}/{{$value ->Image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            <img src="{{asset('assets/img/formateur')}}/{{$value->Image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
-                          
+
                         </div>
                       </td>
                         <td>{{$value->id}}</td>
