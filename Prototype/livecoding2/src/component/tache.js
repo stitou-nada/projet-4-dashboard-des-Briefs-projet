@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Tache extends React.Component {
 
@@ -40,6 +41,10 @@ class Tache extends React.Component {
        })
     }
     handleEdit=(id)=>{
+        let btnAjouter = document.querySelector("#btnAjouter")
+        let btnModifier = document.querySelector("#btnModifier")
+        btnAjouter.style.display = "none"
+        btnModifier.style.display = "inline"
        axios.get("http://127.0.0.1:8000/api/edit/"+id)
        .then(response=>{
         this.setState({
@@ -61,8 +66,8 @@ class Tache extends React.Component {
             <div>
            <form>
              Enter tache:<input value={this.state.nom} onChange={this.handleChange}></input>
-             <button onClick={this.handleClick}>ajouter</button>
-             <button onClick={this.handleModifier}>modifier</button>
+             <button className="btn btn-primary" onClick={this.handleClick} id="btnAjouter">ajouter</button>
+             <button className="btn btn-warning" onClick={this.handleModifier} id="btnModifier" style={{display:"none"}}>modifier</button>
              
              
            </form>
@@ -79,8 +84,8 @@ class Tache extends React.Component {
                         <td>{value.id}</td>
                         <td>{value.Nom}</td>
                         <td>
-                            <button onClick={this.handleEdit.bind(this,value.id)}>Edit</button>
-                            <button onClick={this.handleDelete.bind(this,value.id)}>Supprimer</button>
+                            <button className="btn btn-warning" onClick={this.handleEdit.bind(this,value.id)}>Edit</button>
+                            <button className="btn btn-danger" onClick={this.handleDelete.bind(this,value.id)}>Supprimer</button>
                         </td>
                     </tr>
                     )}
