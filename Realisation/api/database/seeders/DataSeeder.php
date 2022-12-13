@@ -11,6 +11,8 @@ use App\Models\GroupeApprenant;
 use App\Models\groupe;
 use App\Models\preparationBrief;
 use \App\Models\preparationTache;
+use \App\Models\ApprenantPreparationTache;
+use Database\Factories\ApprenantPreparationTacheFactory;
 use Database\Factories\PreparationBriefFactory;
 use Database\Factories\PreparationTacheFactory;
 use Database\Factories\GroupeFactory;
@@ -20,7 +22,7 @@ use Database\Factories\ApprenantFactory;
 use Database\Factories\AnneFormationFactory;
 use Database\Factories\apprenant_preparation_briefFactory;
 
-class AnneFormationSeeder extends Seeder
+class dataSeeder extends Seeder
 {
 
     public function run()
@@ -31,8 +33,9 @@ class AnneFormationSeeder extends Seeder
         apprenant::factory(5)->create();
         GroupeApprenant::factory(4)->create();
         preparationBrief::factory(4)->create();
-        preparationTache::factory(4)->create();
+        preparationTache::factory(6)->create();
         apprenant_preparation_brief::factory(3)->create();
+        ApprenantPreparationTache::factory(6)->create();
 
     }
 }
