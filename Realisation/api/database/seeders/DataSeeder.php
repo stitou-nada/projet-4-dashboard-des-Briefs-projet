@@ -12,6 +12,8 @@ use App\Models\groupe;
 use App\Models\preparationBrief;
 use \App\Models\preparationTache;
 use \App\Models\ApprenantPreparationTache;
+use \App\Models\groupes_preparation_brief;
+use Database\Factories\GroupesPreparationBriefFactory;
 use Database\Factories\ApprenantPreparationTacheFactory;
 use Database\Factories\PreparationBriefFactory;
 use Database\Factories\PreparationTacheFactory;
@@ -36,6 +38,7 @@ class dataSeeder extends Seeder
         preparationTache::factory(6)->create();
         apprenant_preparation_brief::factory(3)->create();
         ApprenantPreparationTache::factory(6)->create();
+        groupes_preparation_brief::factory(6)->create();
 
     }
 }
