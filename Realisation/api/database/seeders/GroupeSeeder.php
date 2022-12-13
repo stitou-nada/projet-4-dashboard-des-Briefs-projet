@@ -9,11 +9,7 @@ use App\Models\formateur;
 use Database\Factories\GroupeFactory;
 class GroupeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
         groupe::factory(4)->create();

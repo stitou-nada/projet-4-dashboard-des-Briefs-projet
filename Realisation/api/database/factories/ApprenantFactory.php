@@ -8,11 +8,7 @@ use \App\Models\apprenant;
 
 class ApprenantFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    
     protected $model=apprenant::class;
     public function definition()
     {
