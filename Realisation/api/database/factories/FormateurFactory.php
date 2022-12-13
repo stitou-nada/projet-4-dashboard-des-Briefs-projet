@@ -26,6 +26,7 @@ class FormateurFactory extends Factory
             "Adress"=>$this->faker->address (),
             "CIN"=>$this->faker->secondaryAddress(),
             "Image"=>$this->faker->imageUrl(true, 'Faker',true),
+            
 
 
 
