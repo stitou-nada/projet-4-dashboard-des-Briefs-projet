@@ -16,10 +16,7 @@ class Tache extends React.Component {
          .then(response=>
             this.setState({
                 data: response.data
-            })
-           
-            
-         )
+            }) )
     }
     handleChange=(e)=>{
        this.setState({
@@ -30,14 +27,23 @@ class Tache extends React.Component {
         e.preventDefault()
        axios.post("http://127.0.0.1:8000/api/store",this.state)
        .then(response=>{
-        window.location.reload()
+        axios.get("http://127.0.0.1:8000/api/tache")
+        .then(response=>
+           this.setState({
+               data: response.data
+           }) )
        })
     }
     handleModifier=(e)=>{
         e.preventDefault()
        axios.put("http://127.0.0.1:8000/api/update/"+this.state.id,this.state)
        .then(response=>{
-        window.location.reload()
+        axios.get("http://127.0.0.1:8000/api/tache")
+        .then(response=>
+           this.setState({
+               data: response.data,
+               nom:''
+           }) )
        })
     }
     handleEdit=(id)=>{
@@ -71,7 +77,7 @@ class Tache extends React.Component {
              
              
            </form>
-            <table>
+            <table className="table">
                 <thead>
                 <tr>
                     <th>Id</th>
