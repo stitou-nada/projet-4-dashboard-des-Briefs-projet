@@ -23,4 +23,4 @@ class apprenant_preparation_briefFactory extends Factory
                     "Apprenant_id"=>$this->faker->randomElement($apprenant),
                 ];
             }
-        }
+ }
