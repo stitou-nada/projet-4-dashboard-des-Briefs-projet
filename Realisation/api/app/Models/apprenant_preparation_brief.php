@@ -5,21 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class apprenant extends Model
+class apprenant_preparation_brief extends Model
 {
     use HasFactory;
-    protected $table = "apprenant";
+    protected $table = "apprenant_preparation_brief";
     public $timestamps= false;
     protected $fillable = [
-
-        "Nom",
-        "Prenom",
-        "Email",
-        "Phone",
-        "Adress",
-        "CIN",
-        "Date_naissance",
-        "Image"
+    "Date_affectation",
+    "Preparation_brief_id",
+    "Apprenant_id"
     ];
- 
 }
