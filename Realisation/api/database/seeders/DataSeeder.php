@@ -13,7 +13,7 @@ use App\Models\preparationBrief;
 use \App\Models\preparationTache;
 use \App\Models\ApprenantPreparationTache;
 use \App\Models\groupes_preparation_brief;
-use Database\Factories\GroupesPreparationBriefFactory;
+use Database\Factories\groupes_preparation_briefFactory;
 use Database\Factories\ApprenantPreparationTacheFactory;
 use Database\Factories\PreparationBriefFactory;
 use Database\Factories\PreparationTacheFactory;

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use \App\Models\groupes_preparation_brief;
 use \App\Models\apprenant_preparation_brief;
 use \App\Models\groupe;
-class GroupesPreparationBriefFactory extends Factory
+class groupes_preparation_briefFactory extends Factory
 {
     protected $model=groupes_preparation_brief::class;
     public function definition()

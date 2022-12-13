@@ -16,7 +16,7 @@ class PreparationBriefFactory extends Factory
         $formateur =formateur::all()->pluck('id')->toArray();
         return [
             "Nom_du_brief"=>$this->faker->name(),
-            "Description"=>$this->faker->text(),
+            "Description"=>$this->faker->word() ,
             "Duree"=>$this->faker->dateTime(),
             "Formateur_id"=>$this->faker->randomElement($formateur),
         ];

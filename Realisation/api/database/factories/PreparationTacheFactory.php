@@ -15,7 +15,7 @@ class PreparationTacheFactory extends Factory
         $preparationBrief =preparationBrief::all()->pluck('id')->toArray();
         return [
             "Nom_tache"=>$this->faker->name(),
-            "Description"=>$this->faker->text(),
+            "Description"=>$this->faker->word(),
             "Duree"=>$this->faker->dateTime(),
             "Preparation_brief_id"=>$this->faker->randomElement($preparationBrief),
         ];
