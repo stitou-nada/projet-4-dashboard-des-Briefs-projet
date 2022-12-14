@@ -28,7 +28,7 @@ class DashboardController extends Controller
         ->join('annee_formation', 'groupes.Annee_formation_id', '=', 'annee_formation.id')
         ->orderBy('annee_formation.Annee_scolaire','desc')
         ->first();
-
+          dd($Groupes);
  // get dernier Brief
         $IdBrief= ApprenantPreparationTache::select(
             "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
