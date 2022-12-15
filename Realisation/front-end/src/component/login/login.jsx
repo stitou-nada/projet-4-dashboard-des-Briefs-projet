@@ -1,63 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
-class Login extends React.Component{
-   
-    state={
-         data:[],
-         nom:'',
-         email:'',
-         
-    }
-    componentDidMount(){
+import { redirect, useNavigate } from "react-router-dom";
+function Login (){
+
+ const navigate= useNavigate()
+
+    const[Data, setData] = useState([])
+    const[Nom, setNom] = useState([])
+    const[Email, setEmail] = useState([])
+
+    useEffect(()=>{
         
            axios.get("http://127.0.0.1:8000/api/formateur")
            .then(response=>{
-            this.setState({
-                data:response.data
-            })
+            
+            setData(response.data)
+    
 
            })
-    }
-    handleChangeNom=(e)=>{
+    },[])
+    const handleChangeNom=(e)=>{
         e.preventDefault()
-        this.setState({
-            nom:e.target.value
-        })
+       
+        setNom(e.target.value)
+      
     }
-    handleChangeEmail=(e)=>{
-        this.setState({
-            email:e.target.value
-        })
+    const  handleChangeEmail=(e)=>{
+            setEmail(e.target.value)
         
     }
-    handleClick=(e)=>{
+     const  handleClick=(e)=>{
         e.preventDefault()
-       let data = this.state.data
-       let nom = this.state.nom
-       let email = this.state.email
-       data.map((value)=>{
+           let data = Data
+           let nom = Nom
+           let email = Email
+           data.map((value)=>{
 
-        if (nom == value.Nom_formateur && email==value.Email_formateur) {
-            return <Redirect push to="/Dashbord" />
-        }
+             if (nom == value.Nom_formateur && email==value.Email_formateur) {
+                return navigate("/Dashbord")
+              }
       
        
     })
        
     }
-   render(){
+   
     // console.log(this.state)
     return(
         <div>
             <form action="">
-                <input type="text" onChange={this.handleChangeNom} placeholder="Nom" /><br/>
-                <input type="text" onChange={this.handleChangeEmail}  placeholder="Email" /><br />
-                <button onClick={this.handleClick}>Login</button>
+                <input type="text" onChange={handleChangeNom} placeholder="Nom" /><br/>
+                <input type="text" onChange={handleChangeEmail}  placeholder="Email" /><br />
+                <button onClick={handleClick}>Login</button>
                 
             </form>
         </div>
     )
-   }
+   
 }
 export default Login;
