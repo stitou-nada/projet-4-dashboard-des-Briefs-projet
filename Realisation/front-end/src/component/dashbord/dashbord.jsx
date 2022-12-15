@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Cookies from "universal-cookie/cjs/Cookies";
+import Groupe from "./avancementGroupe";
 
 
 class Dashbord extends React.Component{
@@ -40,6 +41,10 @@ render(){
             <li>{this.state.ToutalApprenants} </li>
             <li>{this.state.groupe.Annee_scolaire} </li>
          </ul>
+         </div>
+         {/* Avancement de groupe */}
+         <div>
+        <Groupe/>
          </div>
         </div>
     )
