@@ -5,7 +5,7 @@ import Dashbord from './component/dashbord/dashbord';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <BrowserRouter >
       <Routes>
         <Route path='/' element={<Login />}></Route>

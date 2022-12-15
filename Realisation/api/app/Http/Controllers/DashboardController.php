@@ -27,7 +27,7 @@ class DashboardController extends Controller
         ->where('Formateur_id',$id)
         ->join('formateur', 'groupes.Formateur_id', '=', 'formateur.id')
         ->join('annee_formation', 'groupes.Annee_formation_id', '=', 'annee_formation.id')
-        ->orderBy('annee_formation.Annee_scolaire','desc')
+        ->orderBy('annee_formation.id','desc')
         ->first();
 
  // get dernier Brief
