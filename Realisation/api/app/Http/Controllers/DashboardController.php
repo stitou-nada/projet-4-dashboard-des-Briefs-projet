@@ -11,9 +11,10 @@ use App\Models\ApprenantPreparationTache;
 
 class DashboardController extends Controller
 {
+    // get tous formateur
     function  formateur(){
-        $Groupes = formateur::All();
-        return $Groupes ;
+        $formateur = formateur::All();
+        return $formateur ;
     }
 
 
@@ -26,9 +27,9 @@ class DashboardController extends Controller
         ->where('Formateur_id',$id)
         ->join('formateur', 'groupes.Formateur_id', '=', 'formateur.id')
         ->join('annee_formation', 'groupes.Annee_formation_id', '=', 'annee_formation.id')
-        ->orderBy('annee_formation.Annee_scolaire','desc')
+        ->orderBy('annee_formation.id','desc')
         ->first();
-       
+
  // get dernier Brief
         $IdBrief= ApprenantPreparationTache::select(
             "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
@@ -45,7 +46,7 @@ class DashboardController extends Controller
             ->groupBy("preparation_brief.id")
             ->orderBy('preparation_brief.id','desc')
                 ->first();
-                
+
 // Toutal des apprenants
          $CountApprenants = GroupeApprenant::select("*")
         ->where([
@@ -56,7 +57,7 @@ class DashboardController extends Controller
             ->join('groupes', 'groupes_apprenant.Groupe_id', '=', 'groupes.id')
             ->join('apprenant', 'groupes_apprenant.Apprenant_id', '=', 'apprenant.id')
             ->count();
-          
+
 // list des apprenant
             $GetAppenants = GroupeApprenant::select("*")
             ->where([
@@ -84,7 +85,7 @@ class DashboardController extends Controller
             ])
             ->groupBy("groupes_preparation_brief.Groupe_id")
             ->get();
-        
+
 
 
 
@@ -109,8 +110,8 @@ class DashboardController extends Controller
                     ->groupBy("preparation_brief.id")
                     ->orderBy('preparation_brief.id','desc')
                         ->get();
-                       
 
+           
 //get first brief
             $FirstBrief= ApprenantPreparationTache::select(
                     "apprenant.Nom",
@@ -148,7 +149,7 @@ class DashboardController extends Controller
                        "ListBrifes"=> $listBrief,
                         "FirstBrief"=>$FirstBrief
                     ]);
-                
+
             }
 
 // Avancement des Apprenant
@@ -174,7 +175,7 @@ class DashboardController extends Controller
             ->groupBy('Nom')
             ->get()
             ;
-            dd($BriefAV);  
+            dd($BriefAV);
 
             return response()->json(["avancemantBrief"=> $BriefAV]);
     }
