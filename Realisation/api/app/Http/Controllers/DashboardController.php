@@ -111,7 +111,7 @@ class DashboardController extends Controller
                     ->orderBy('preparation_brief.id','desc')
                         ->get();
 
-
+           
 //get first brief
             $FirstBrief= ApprenantPreparationTache::select(
                     "apprenant.Nom",

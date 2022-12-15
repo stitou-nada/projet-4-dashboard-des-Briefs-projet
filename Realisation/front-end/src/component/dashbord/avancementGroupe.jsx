@@ -54,7 +54,7 @@ const chartImagee = myChart .getUrl();
     return(
         <div>
             <h1>Etat d' avancement du groupe:</h1>
-        <img src={chartImagee} style={{width:250,height:100}} alt="" />
+        <img src={chartImagee} style={{width:250 }} alt="" />
         </div>
     )
 }

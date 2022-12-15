@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Cookies from "universal-cookie/cjs/Cookies";
+import Brief from "./avancementBrief";
 import Groupe from "./avancementGroupe";
 
 
@@ -45,6 +46,10 @@ render(){
          {/* Avancement de groupe */}
          <div>
         <Groupe/>
+         </div>
+         {/* Avancement de brief */}
+         <div>
+            <Brief />
          </div>
         </div>
     )
