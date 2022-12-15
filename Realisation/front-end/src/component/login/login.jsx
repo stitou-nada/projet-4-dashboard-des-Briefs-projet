@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 class Login extends React.Component{
    
     state={
@@ -38,7 +39,7 @@ class Login extends React.Component{
        data.map((value)=>{
 
         if (nom == value.Nom_formateur && email==value.Email_formateur) {
-            console.log("rrrrrrrr")
+            return <Redirect push to="/Dashbord" />
         }
       
        
