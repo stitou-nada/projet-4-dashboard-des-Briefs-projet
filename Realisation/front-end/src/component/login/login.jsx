@@ -49,7 +49,6 @@ function Login (){
        
     }
    
-    // console.log(this.state)
     return(
         <div>
             <form action="">

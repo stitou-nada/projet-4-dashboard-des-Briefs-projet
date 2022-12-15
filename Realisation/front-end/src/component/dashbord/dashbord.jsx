@@ -30,7 +30,7 @@ class Dashbord extends React.Component{
 
     }
 render(){
-    console.log(this.state)
+   
     return(
         <div>
           <h1> Dasbhord d'état d'avancement</h1> 
