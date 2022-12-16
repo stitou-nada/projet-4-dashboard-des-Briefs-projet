@@ -40,6 +40,7 @@ render(){
        
        <div>
           <ul>
+            <li>{this.state.groupe.Image} </li>
             <li>{this.state.groupe.Nom_groupe} </li>
             <li>{this.state.ToutalApprenants} </li>
             <li>{this.state.groupe.Annee_scolaire} </li>
