@@ -114,7 +114,7 @@ class DashboardController extends Controller
 
 //get dernier  brief
             $LastBrief= ApprenantPreparationTache::select(
-                    "apprenant.Nom",
+                    "apprenant.Nom","apprenant.Prenom",
                     "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
                     DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
                     )
@@ -131,6 +131,7 @@ class DashboardController extends Controller
 
                         ])
                     ->groupBy("Nom_du_brief")
+                    ->groupBy("Prenom")
                     ->groupBy("Nom")
                     ->groupBy("preparation_brief.id")
                     ->orderBy('preparation_brief.id','desc')

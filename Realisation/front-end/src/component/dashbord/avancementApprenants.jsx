@@ -5,16 +5,16 @@ import QuickChart from "quickchart-js";
 class Apprenants extends React.Component{
 
     state={
-        listBrief:[],
-        lastBrief:[]
+        ListBrief:[],
+        brief:[]
     }
 componentDidMount(){
     const cookie = new Cookies()
     axios.get("http://127.0.0.1:8000/api/groupe/"+cookie.get('idFormateur'))
     .then(response=>{
        this.setState({
-          listBrief:response.data.ListBriefs,
-          lastBrief:response.data.LastBrief,
+          ListBrief:response.data.ListBriefs,
+          brief:response.data.LastBrief,
           groupeId:response.data.Groupe.idGroupe
 
        })
@@ -28,9 +28,7 @@ selectBrief=(e)=>{
   axios.get("http://127.0.0.1:8000/api/BriefSelect/"+this.state.groupeId+"/"+e.target.value)
   .then(response=>{
      this.setState({
-        lastBrief:response.data.avancemantBrief
-
-
+        brief:response.data.avancemantBrief
      })
   })
 
@@ -38,14 +36,14 @@ selectBrief=(e)=>{
 }
 render(){
 
-
+         console.log(this.state.brief)
     const myChart = new QuickChart();
 
     myChart.setConfig({
       type: "progressBar",
       data: {
         datasets: [
-          {data: this.state.lastBrief.map(value=>value.Percentage)},
+          {data: this.state.brief.map(value=>value.Percentage)},
         ],
       },
       options: {
@@ -68,17 +66,17 @@ render(){
     return(
         <div>
 
-            
+            {/*Selecte brief  */}
           <select onChange={this.selectBrief} name="" id="">
-            {this.state.listBrief.map((value)=>
+            {this.state.ListBrief.map((value)=>
             <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>
               
                 
              )}
              </select>
-
-              {this.state.lastBrief.map((value)=>
-                <li key={Math.random()}>{value.Nom} </li>
+            {/* Liste apprenant */}
+              {this.state.brief.map((value)=>
+                <li key={Math.random()}>{value.Prenom} {value.Nom} </li>
 
               )}
 
