@@ -67,13 +67,14 @@ render(){
         <div>
 
             {/*Selecte brief  */}
-          <select onChange={this.selectBrief} name="" id="">
+           <center><select onChange={this.selectBrief}  id="select">
             {this.state.ListBrief.map((value)=>
             <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>
               
                 
              )}
              </select>
+             </center>
             {/* Liste apprenant */}
               {this.state.brief.map((value)=>
                 <li key={Math.random()}>{value.Prenom} {value.Nom} </li>

@@ -42,8 +42,8 @@ myChart.setConfig({
 const chartImagee = myChart .getUrl();
 
     return(
-        <div>
-            <h3>Etat d' avancement du groupe:</h3>
+        <div id="cadreGroupe">
+            <h3 id="titreGroupe">Etat d' avancement du groupe:</h3>
         <img src={chartImagee} style={{width:250 }} alt="" />
         </div>
     )

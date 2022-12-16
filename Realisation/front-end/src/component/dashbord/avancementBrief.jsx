@@ -49,13 +49,12 @@ render(){
     const chartImagee = myChart .getUrl();
     
     return(
-        <div>
+        <div >
             {this.state.listBrief.map((value)=>
             <div key={value.id}>
-              <li>  {value.Nom_du_brief}</li>
+                {value.Nom_du_brief}
             </div>
-              
-             )}
+              )}
                      <img src={chartImagee} style={{ width:250}} alt="" />
 
         </div>
