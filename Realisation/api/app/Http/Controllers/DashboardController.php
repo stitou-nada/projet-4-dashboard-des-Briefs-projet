@@ -160,7 +160,7 @@ class DashboardController extends Controller
 
             $BriefAvancement= ApprenantPreparationTache::select(
 
-                "apprenant.Nom",
+                "apprenant.Nom","apprenant.Prenom",
                 DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
 
                 )
@@ -176,6 +176,7 @@ class DashboardController extends Controller
                 ['preparation_brief.id',$idB]
             ])
             ->groupBy('Nom')
+            ->groupBy('Prenom')
             ->get()
             ;
             // dd($BriefAvancement);
