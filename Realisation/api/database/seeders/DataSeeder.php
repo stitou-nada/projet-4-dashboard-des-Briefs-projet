@@ -32,13 +32,13 @@ class dataSeeder extends Seeder
         formateur::factory(3)->create();
         anneFormation::factory(3)->create();
         groupe::factory(4)->create();
-        apprenant::factory(5)->create();
+        apprenant::factory(3)->create();
         GroupeApprenant::factory(4)->create();
         preparationBrief::factory(4)->create();
-        preparationTache::factory(6)->create();
+        preparationTache::factory(4)->create();
         apprenant_preparation_brief::factory(3)->create();
-        ApprenantPreparationTache::factory(6)->create();
-        groupes_preparation_brief::factory(6)->create();
+        ApprenantPreparationTache::factory(3)->create();
+        groupes_preparation_brief::factory(3)->create();
 
     }
 }
