@@ -110,10 +110,10 @@ class DashboardController extends Controller
                     ->groupBy("preparation_brief.id")
                     ->orderBy('preparation_brief.id','desc')
                         ->get();
+// dd($listBrief);
 
-           
-//get first brief
-            $FirstBrief= ApprenantPreparationTache::select(
+//get dernier  brief
+            $LastBrief= ApprenantPreparationTache::select(
                     "apprenant.Nom",
                     "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
                     DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
@@ -137,6 +137,8 @@ class DashboardController extends Controller
 
                         ->get();
 
+// dd($LastBrief);
+
                     //     return response()->json([
                     //         'Groupes' =>$Groupes
                     //     ]);
@@ -146,16 +148,16 @@ class DashboardController extends Controller
                        "ToutalApprenants"=> $CountApprenants,
                        "ListApprenants"=> $GetAppenants,
                         "AvancementGroupe"=>$AvancementGroupe,
-                       "ListBrifes"=> $listBrief,
-                        "FirstBrief"=>$FirstBrief
+                       "ListBriefs"=> $listBrief,
+                        "LastBrief"=>$LastBrief
                     ]);
 
             }
 
 // Avancement des Apprenant
-         function Av_ApprenantTache($idG,$idB){
+         function BriefSelect($idG,$idB){
 
-            $BriefAV= ApprenantPreparationTache::select(
+            $BriefAvancement= ApprenantPreparationTache::select(
 
                 "apprenant.Nom",
                 DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
@@ -175,8 +177,8 @@ class DashboardController extends Controller
             ->groupBy('Nom')
             ->get()
             ;
-            dd($BriefAV);
+            // dd($BriefAvancement);
 
-            return response()->json(["avancemantBrief"=> $BriefAV]);
+            return response()->json(["avancemantBrief"=> $BriefAvancement]);
     }
 }

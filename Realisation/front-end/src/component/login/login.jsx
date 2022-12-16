@@ -16,7 +16,7 @@ function Login (){
            .then(response=>{
             
             setData(response.data)
-    
+            console.log(response.data)
 
            })
     },[])
