@@ -6,7 +6,6 @@ import Apprenant from "./avancementApprenants";
 import Brief from "./avancementBrief";
 import Groupe from "./avancementGroupe";
 
-
 class Dashbord extends React.Component{
    
     state={
@@ -35,9 +34,9 @@ class Dashbord extends React.Component{
 render(){
    
     return(
+        
         <div>
           <h1> Dasbhord d'état d'avancement</h1> 
-       
        <div>
           <ul>
             <li>{this.state.groupe.Image} </li>
