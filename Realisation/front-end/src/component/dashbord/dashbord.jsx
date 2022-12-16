@@ -38,10 +38,14 @@ render(){
    
     return(
          
-        <div>
-          <h1 id="titre"> Dasbhord d'état d'avancement</h1> 
-          <Container>
-      <Navbar expand="lg" variant="light" bg="light">
+        <div >
+            
+            <h3 >
+                Tableau de borde d'état d'avancement
+            </h3>
+          
+          <Container  >
+      <Navbar expand="lg" variant="light" bg="light"  >
         <Container>
           <Navbar.Brand href="#"><img src={this.state.groupe.Logo}></img> Logo</Navbar.Brand>
           <Navbar.Brand href="#">{this.state.groupe.Nom_groupe}</Navbar.Brand>
@@ -57,11 +61,11 @@ render(){
          </div>
          {/* Avancement de brief */}
          <div>
-            <h1>Etat d'avencement de brief :</h1>
+            <h3>Etat d'avencement de brief :</h3>
             <Brief />
          </div>
          <div>
-            <h1>Etat d'avencement des apprenants :</h1>
+            <h3>Etat d'avencement des apprenants :</h3>
            <Apprenants/>
          </div>
         </div>

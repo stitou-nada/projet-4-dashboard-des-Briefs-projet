@@ -3,6 +3,7 @@ import React from "react";
 import Cookies from "universal-cookie/cjs/Cookies";
 import QuickChart from "quickchart-js";
 
+
 class Groupe extends React.Component{
 
     state={
@@ -29,32 +30,20 @@ render(){
 const myChart = new QuickChart();
 
 myChart.setConfig({
-  type: "progressBar",
+  type: "radialGauge",
   data: {
     datasets: [
-      {data: [this.state.AvancementGroupe],},
+      {data: [this.state.AvancementGroupe], backgroundColor: 'green'},
     ],
+    
   },
-  options: {
-    plugins: {
-      datalabels: {
-        font: {
-          size: 30, },
-        color: (context) =>
-          context.dataset.data[context.dataIndex] > 15 ? "#fff" : "#000",
-        anchor: (context) =>
-          context.dataset.data[context.dataIndex] > 15 ? "center" : "end",
-        align: (context) =>
-          context.dataset.data[context.dataIndex] > 15 ? "center" : "right",
-      },
-    },
-  },
+  
 });
 const chartImagee = myChart .getUrl();
 
     return(
         <div>
-            <h1>Etat d' avancement du groupe:</h1>
+            <h3>Etat d' avancement du groupe:</h3>
         <img src={chartImagee} style={{width:250 }} alt="" />
         </div>
     )

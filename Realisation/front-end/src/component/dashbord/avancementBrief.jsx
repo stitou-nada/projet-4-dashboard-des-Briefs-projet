@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Cookies from "universal-cookie/cjs/Cookies";
 import QuickChart from "quickchart-js";
+import "bootstrap/dist/css/bootstrap.min.css";
 class Brief extends React.Component{
 
     state={
@@ -28,20 +29,19 @@ render(){
       type: "progressBar",
       data: {
         datasets: [
-          {data: this.state.listBrief.map(value=>value.Percentage)},
+          {data: this.state.listBrief.map(value=>value.Percentage),backgroundColor:['Navy','Teal']},
         ],
       },
       options: {
         plugins: {
+          roundedBars: {
+            cornerRadius: -40,
+            allCorners: true,
+          },
           datalabels: {
             font: {
               size: 30, },
-            color: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "#fff" : "#000",
-            anchor: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "center" : "end",
-            align: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "center" : "right",
+            
           },
         },
       },
@@ -51,13 +51,16 @@ render(){
     return(
         <div>
             {this.state.listBrief.map((value)=>
-            
-              <li key={Math.random()}>  {value.Nom_du_brief}</li>
-                
+            <div key={value.id}>
+              <li>  {value.Nom_du_brief}</li>
+            </div>
+              
              )}
-                     <img src={chartImagee} style={{width:250 }} alt="" />
+                     <img src={chartImagee} style={{ width:250}} alt="" />
 
         </div>
+
+        
     )
 }
 

@@ -43,7 +43,7 @@ render(){
       type: "progressBar",
       data: {
         datasets: [
-          {data: this.state.brief.map(value=>value.Percentage)},
+          {data: this.state.brief.map(value=>value.Percentage),backgroundColor:'Chocolate'},
         ],
       },
       options: {
