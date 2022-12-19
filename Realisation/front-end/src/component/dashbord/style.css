@@ -4,6 +4,13 @@
 }
 #Brand{
     font-size: 15px;
+    color: rgb(7, 39, 53);
+    font-weight: bold;
+}
+#size{
+    background-color: rgba(136, 142, 147, 0.783);
+    border-radius: 10px;
+ 
 }
 #cadreGroupe{
     padding:19px;

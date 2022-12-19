@@ -41,7 +41,7 @@ render(){
         <div>
             <h3 id="titre-tableau">Tableau de bord  d'état d'avancement</h3>
           <Container  >
-      <Navbar expand="lg" variant="light" bg="light"  >
+      <Navbar expand="lg" variant="light" bg="light"   >
         <Container id="size">           
           <Navbar.Brand  id="Brand" href="#"><img src={"img/groupe/"+ this.state.groupe.Logo}></img></Navbar.Brand>
           <Navbar.Brand  id="Brand" href="#">{this.state.groupe.Nom_groupe}</Navbar.Brand>
