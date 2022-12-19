@@ -42,8 +42,8 @@ render(){
             <h3 id="titre-tableau">Tableau de bord  d'état d'avancement</h3>
           <Container  >
       <Navbar expand="lg" variant="light" bg="light"  >
-        <Container id="size">
-          <Navbar.Brand  id="Brand" href="#"><img src={this.state.groupe.Logo}></img> Logo</Navbar.Brand>
+        <Container id="size">           
+          <Navbar.Brand  id="Brand" href="#"><img src={"img/groupe/"+ this.state.groupe.Logo}></img></Navbar.Brand>
           <Navbar.Brand  id="Brand" href="#">{this.state.groupe.Nom_groupe}</Navbar.Brand>
           <Navbar.Brand  id="Brand" href="#">{this.state.ToutalApprenants} apprenants</Navbar.Brand>
           <Navbar.Brand  id="Brand" href="#"> Année {this.state.groupe.Annee_scolaire}</Navbar.Brand>

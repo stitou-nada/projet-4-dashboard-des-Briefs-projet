@@ -23,40 +23,24 @@ componentDidMount(){
 render(){
 
 
-    const myChart = new QuickChart();
 
-    myChart.setConfig({
-      type: "progressBar",
-      data: {
-        datasets: [
-          {data: this.state.listBrief.map(value=>value.Percentage),backgroundColor:['Navy','Teal']},
-        ],
-      },
-      options: {
-        plugins: {
-          roundedBars: {
-            cornerRadius: -40,
-            allCorners: true,
-          },
-          datalabels: {
-            font: {
-              size: 30, },
-            
-          },
-        },
-      },
-    });
-    const chartImagee = myChart .getUrl();
     
     return(
         <div >
             {this.state.listBrief.map((value)=>
-            <div key={value.id}>
-                {value.Nom_du_brief}
-            </div>
-              )}
-                     <img src={chartImagee} style={{ width:250}} alt="" />
+           <div id="DivChart">
 
+           <div key={value.id} >
+                  {value.Nom_du_brief}
+            </div>
+           
+          <div className="progress" id="ChartBrief" > 
+             <div className="progress-bar" role="progressbar" style={{width: value.Percentage + "%" }}  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{value.Percentage}</div>
+          </div>
+          </div>
+              )}
+                   
+ 
         </div>
 
         

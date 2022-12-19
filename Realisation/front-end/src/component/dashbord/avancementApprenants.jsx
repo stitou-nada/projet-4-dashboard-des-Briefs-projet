@@ -36,38 +36,13 @@ selectBrief=(e)=>{
 }
 render(){
 
-         console.log(this.state.brief)
-    const myChart = new QuickChart();
 
-    myChart.setConfig({
-      type: "progressBar",
-      data: {
-        datasets: [
-          {data: this.state.brief.map(value=>value.Percentage),backgroundColor:'Chocolate'},
-        ],
-      },
-      options: {
-        plugins: {
-          datalabels: {
-            font: {
-              size: 30, },
-            color: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "#fff" : "#000",
-            anchor: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "center" : "end",
-            align: (context) =>
-              context.dataset.data[context.dataIndex] > 15 ? "center" : "right",
-          },
-        },
-      },
-    });
-    const chartImagee = myChart .getUrl();
-    
+
     return(
-        <div>
+        <div >
 
             {/*Selecte brief  */}
-           <center><select onChange={this.selectBrief}  id="select">
+           <center id="selecet"><select onChange={this.selectBrief}  id="select">
             {this.state.ListBrief.map((value)=>
             <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>
               
@@ -77,11 +52,17 @@ render(){
              </center>
             {/* Liste apprenant */}
               {this.state.brief.map((value)=>
-                <li key={Math.random()}>{value.Prenom} {value.Nom} </li>
-
+              <div id="DivChart-App">
+                <p key={Math.random()}>{value.Prenom} {value.Nom} </p>
+        
+              <div className="progress" id="ChartApprenant" > 
+             <div className="progress-App" role="progressbar" style={{width:value.Percentage + "%" }}  
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{value.Percentage}</div>
+          </div>
+          </div>
+          
               )}
 
-                     <img src={chartImagee} style={{width:250 }} alt="" />
 
         </div>
     )
