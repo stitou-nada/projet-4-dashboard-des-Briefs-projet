@@ -13,7 +13,8 @@ class Dashbord extends React.Component{
    
     state={
         idFormateur:"",
-        groupe:[]
+        groupe:[],
+        Annee_scolaire:[]
     }
     
     componentDidMount(){
@@ -31,7 +32,31 @@ class Dashbord extends React.Component{
             })
            
         })
-
+        axios.get("http://127.0.0.1:8000/api/anne_formation/"+cookies.get('idFormateur'))
+        .then(response=>{
+            // console.log(response.data)
+            this.setState({
+                Annee_scolaire: response.data,
+            //  ToutalApprenants: response.data.ToutalApprenants
+             
+            })
+           
+        })
+        
+    }
+    
+    Annee_scolaire=(e)=>{
+        // console.log(e.target.value)
+        
+        axios.get("http://127.0.0.1:8000/api/getGroupe/"+e.target.value)
+        .then(response=>{
+            console.log(response.data)
+            this.setState({
+                groupe: response.data.Groupe,
+                ToutalApprenants: response.data.ToutalApprenant
+            })
+           
+        })
 
     }
 render(){
@@ -40,7 +65,16 @@ render(){
          
         <div>
             <h3 id="titre-tableau">Tableau de bord  d'état d'avancement</h3>
+            <center id=""><select onChange={this.Annee_scolaire} >
+            {this.state.Annee_scolaire.map((value)=>
+            <option key={ value.id} value={value.id}>  {value.Annee_scolaire}</option>
+              
+                
+             )}
+             </select>
+             </center>  
           <Container  >
+         
       <Navbar expand="lg" variant="light" bg="light"   >
         <Container id="size">           
           <Navbar.Brand  id="Brand" href="#"><img src={"img/groupe/"+ this.state.groupe.Logo}></img></Navbar.Brand>

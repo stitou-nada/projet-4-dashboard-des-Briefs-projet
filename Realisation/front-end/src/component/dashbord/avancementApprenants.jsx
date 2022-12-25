@@ -52,8 +52,8 @@ render(){
              </center>
             {/* Liste apprenant */}
               {this.state.brief.map((value)=>
-              <div id="DivChart-App">
-                <p key={Math.random()}>{value.Prenom} {value.Nom} </p>
+              <div key={Math.random()} id="DivChart-App">
+                <p >{value.Prenom} {value.Nom} </p>
         
               <div className="progress" id="ChartApprenant" > 
              <div className="progress-App" role="progressbar" style={{width:value.Percentage + "%" }}  

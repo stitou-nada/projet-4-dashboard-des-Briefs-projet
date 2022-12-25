@@ -185,4 +185,44 @@ class DashboardController extends Controller
 
 
 }
+
+//anne scolaire
+function anne_formation($id){
+    $anne_scolaire = groupe::select("*")->where('Formateur_id',$id)
+    ->join('formateur', 'groupes.Formateur_id', '=', 'formateur.id')
+    ->join('annee_formation', 'groupes.Annee_formation_id', '=', 'annee_formation.id')
+    ->orderBy('annee_formation.id','desc')
+    ->get();
+    // dd($anne_scolaire);
+    return $anne_scolaire ;
+   }
+
+  //get groupe after select date dcolaire
+   function getGroupe($id){
+
+   $Groupe = groupe::select("*",)
+   ->where('groupes.id',$id)
+   ->join('formateur', 'groupes.Formateur_id', '=', 'formateur.id')
+   ->join('annee_formation', 'groupes.Annee_formation_id', '=', 'annee_formation.id')
+   ->orderBy('annee_formation.Annee_scolaire','desc')
+   ->first();
+
+ $CountAppenants = GroupeApprenant::select("*")
+        ->where([
+            ['groupes_apprenant.Groupe_id',$id]
+            ])
+
+            ->join('groupes', 'groupes_apprenant.Groupe_id', '=', 'groupes.id')
+            ->join('apprenant', 'groupes_apprenant.Apprenant_id', '=', 'apprenant.id')
+            ->count();
+    // dd($CountAppenants);
+   return  response()->json([
+    'ToutalApprenant'=>$CountAppenants,
+    "Groupe"=>$Groupe
+   ]);
+}
+
+
+
+
 }

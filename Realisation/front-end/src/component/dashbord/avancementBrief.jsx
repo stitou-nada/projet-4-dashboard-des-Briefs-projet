@@ -28,9 +28,9 @@ render(){
     return(
         <div >
             {this.state.listBrief.map((value)=>
-           <div id="DivChart">
+           <div  key={value.id} id="DivChart">
 
-           <div key={value.id} >
+           <div  >
                   {value.Nom_du_brief}
             </div>
            

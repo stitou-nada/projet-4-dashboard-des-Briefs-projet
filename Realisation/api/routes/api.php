@@ -19,6 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('AvancementApprenant/{id}', [DashboardController::class,'AvancementApprenant'])->name('AvancementApprenant');
+Route::get('AvancementBrief/{id}', [DashboardController::class,'AvancementBrief'])->name('AvancementBrief');
+Route::get('AvancementGroups/{id}', [DashboardController::class,'AvancementGroups'])->name('AvancementGroups');
+Route::get('getGroupe/{id}', [DashboardController::class,'getGroupe'])->name('getGroupe');
+Route::get('anne_formation/{id}', [DashboardController::class,'anne_formation'])->name('anne_formation');
+
+
+
 Route::get('groupe/{id}', [DashboardController::class,'Groupe'])->name('Groupe');
 Route::get('formateur', [DashboardController::class,'formateur'])->name('formateur');
 Route::get('BriefSelect/{idF}/{idB}', [DashboardController::class,'BriefSelect'])->name('BriefSelect');
