@@ -21,6 +21,7 @@ componentDidMount(){
 
 }
 render(){
+    //appré selectioner anné scolaire
     if(this.props.IdGroupe){
         const idGroupe= this.props.IdGroupe
         axios.get("http://127.0.0.1:8000/api/AvancementBrief/"+ idGroupe)
