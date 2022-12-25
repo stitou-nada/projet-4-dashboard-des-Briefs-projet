@@ -20,8 +20,6 @@ class Groupe extends React.Component {
                     })
                 })
 
-
-
         }
 
         render() {
