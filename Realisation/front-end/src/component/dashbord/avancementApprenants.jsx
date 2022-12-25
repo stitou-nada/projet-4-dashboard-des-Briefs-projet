@@ -19,6 +19,7 @@ componentDidMount(){
 
        })
     })
+    
    
 
 
@@ -36,7 +37,18 @@ selectBrief=(e)=>{
 }
 render(){
 
-
+    if(this.props.IdGroupe){
+        const idGroupe= this.props.IdGroupe
+        axios.get("http://127.0.0.1:8000/api/AvancementApprenant/"+ idGroupe)
+        .then(response=>{
+            console.log(response.data)
+            this.setState({
+                ListBrief:response.data.ListBrief,
+                brief:response.data.avancemantBrief
+        })
+        })
+    
+    }
 
     return(
         <div >

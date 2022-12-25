@@ -19,13 +19,23 @@ componentDidMount(){
             AvancementGroupe:response.data.AvancementGroupe[0].Percentage
     })
     })
-
-
-
+    
+    
+    
 }
 
 render(){
-
+    if(this.props.IdGroupe){
+        const idGroupe= this.props.IdGroupe
+        axios.get("http://127.0.0.1:8000/api/AvancementGroups/"+ idGroupe)
+        .then(response=>{
+            // console.log(response.data)
+            this.setState({
+                AvancementGroupe:response.data.Percentage
+        })
+        })
+    
+    }
     
 const myChart = new QuickChart();
 

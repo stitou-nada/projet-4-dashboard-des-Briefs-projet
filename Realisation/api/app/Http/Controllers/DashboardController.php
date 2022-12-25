@@ -7,7 +7,7 @@ use App\Models\formateur;
 use App\Models\GroupeApprenant;
 use Illuminate\Support\Facades\DB;
 use App\Models\ApprenantPreparationTache;
-
+use App\Models\groupes_preparation_brief;
 
 class DashboardController extends Controller
 {
@@ -223,6 +223,109 @@ function anne_formation($id){
 }
 
 
+
+
+    //AvancementGroups after select date scolaire
+    function AvancementGroups($idG){
+        $AvancementGroups= ApprenantPreparationTache::select(
+            DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
+
+          "groupes_preparation_brief.Groupe_id",
+
+
+          )
+      ->join('apprenant', 'apprenant_preparation_tache.Apprenant_id', '=','apprenant.id')
+      ->join('preparation_tache', 'apprenant_preparation_tache.Preparation_tache_id', '=','preparation_tache.id')
+      ->join('apprenant_preparation_brief', 'apprenant_preparation_tache.Apprenant_P_Brief_id', '=','apprenant_preparation_brief.id')
+      ->join('preparation_brief', 'apprenant_preparation_brief.Preparation_brief_id', '=','preparation_brief.id')
+      ->join('groupes_preparation_brief','apprenant_preparation_brief.id','=','groupes_preparation_brief.Apprenant_preparation_brief_id')
+      ->where([
+
+          ['groupes_preparation_brief.Groupe_id',$idG]
+      ])
+      ->groupBy('groupes_preparation_brief.Groupe_id')
+      ->first()
+      ;
+return $AvancementGroups;
+    //   dd($AvancementGroups);
+    }
+
+
+    //AvancementGroups after select date scolaire
+    function AvancementBrief($idG){
+        $AvancementBrief= ApprenantPreparationTache::select(
+            "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
+            DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
+            )
+            ->join('apprenant', 'apprenant_preparation_tache.Apprenant_id', '=','apprenant.id')
+            ->join('preparation_tache', 'apprenant_preparation_tache.Preparation_tache_id', '=','preparation_tache.id')
+            ->join('apprenant_preparation_brief', 'apprenant_preparation_tache.Apprenant_P_Brief_id', '=','apprenant_preparation_brief.id')
+            ->join('preparation_brief', 'apprenant_preparation_brief.Preparation_brief_id', '=','preparation_brief.id')
+            ->join('groupes_preparation_brief','apprenant_preparation_brief.id','=','groupes_preparation_brief.Apprenant_preparation_brief_id')
+            ->where([
+
+                ['groupes_preparation_brief.Groupe_id',$idG],
+
+
+                ])
+            ->groupBy("Nom_du_brief")
+            ->groupBy("preparation_brief.id")
+            ->orderBy('preparation_brief.id','desc')
+                ->get();
+return    $AvancementBrief;
+    }
+
+    function AvancementApprenant($idG){
+
+        $BriefAV= ApprenantPreparationTache::select(
+
+            "apprenant.Nom",
+            DB::raw(" 100 / count('apprenant_preparation_tache.Etat')   * count(CASE Etat WHEN 'terminer' THEN 1 ELSE NULL END) as Percentage"),
+
+            )
+        ->join('apprenant', 'apprenant_preparation_tache.Apprenant_id', '=','apprenant.id')
+        ->join('preparation_tache', 'apprenant_preparation_tache.Preparation_tache_id', '=','preparation_tache.id')
+        ->join('apprenant_preparation_brief', 'apprenant_preparation_tache.Apprenant_P_Brief_id', '=','apprenant_preparation_brief.id')
+        ->join('preparation_brief', 'apprenant_preparation_brief.Preparation_brief_id', '=','preparation_brief.id')
+        ->join('groupes_preparation_brief','apprenant_preparation_brief.id','=','groupes_preparation_brief.Apprenant_preparation_brief_id')
+        ->where([
+
+            ['groupes_preparation_brief.Groupe_id',$idG],
+
+
+        ])
+        ->groupBy('Nom')
+        ->get()
+        ;
+
+
+
+        $listBrief= groupes_preparation_brief::select(
+"Nom_du_brief",
+"preparation_brief.id"
+            // "preparation_brief.Nom_du_brief",'preparation_brief.id as id' ,
+            )
+            ->join('apprenant_preparation_brief','groupes_preparation_brief.Apprenant_preparation_brief_id','=','apprenant_preparation_brief.id')
+            // ->join('groupes_preparation_brief','apprenant_preparation_brief.id','=','groupes_preparation_brief.Apprenant_preparation_brief_id')
+            ->join('preparation_brief', 'apprenant_preparation_brief.Preparation_brief_id', '=','preparation_brief.id')
+            ->where([
+
+                ['groupes_preparation_brief.Groupe_id',$idG],
+
+
+                ])
+            ->groupBy("Nom_du_brief")
+            ->groupBy("preparation_brief.id")
+            ->orderBy('preparation_brief.id','desc')
+                ->get();
+
+
+// dd($listBrief);
+        return response()->json([
+            "avancemantBrief"=> $BriefAV,
+            "ListBrief"=>$listBrief
+    ]);
+}
 
 
 }

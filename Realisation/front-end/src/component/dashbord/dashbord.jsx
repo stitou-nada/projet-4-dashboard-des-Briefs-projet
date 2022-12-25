@@ -13,6 +13,7 @@ class Dashbord extends React.Component{
    
     state={
         idFormateur:"",
+        IdGroupe:"",
         groupe:[],
         Annee_scolaire:[]
     }
@@ -50,10 +51,11 @@ class Dashbord extends React.Component{
         
         axios.get("http://127.0.0.1:8000/api/getGroupe/"+e.target.value)
         .then(response=>{
-            console.log(response.data)
+            // console.log(response.data)
             this.setState({
                 groupe: response.data.Groupe,
-                ToutalApprenants: response.data.ToutalApprenant
+                ToutalApprenants: response.data.ToutalApprenant,
+                IdGroupe:e.target.value
             })
            
         })
@@ -88,16 +90,16 @@ render(){
             <div className="row">
          {/* Avancement de groupe */}
          <div className=" col-6">
-        <Groupe/>
+        <Groupe IdGroupe={this.state.IdGroupe} />
          </div>
          <div className="col-6" id="cadreApprenant">
             <h3 id="titreApprenant">Etat d'avencement des apprenants :</h3>
-           <Apprenants/>
+           <Apprenants  IdGroupe={this.state.IdGroupe}/>
          </div>
          {/* Avancement de brief */}
          <div className="col-6" id="cadreBrief">
             <h3 id="titreBrief">Etat d'avencement de brief :</h3>
-            <Brief />
+            <Brief   IdGroupe={this.state.IdGroupe}/>
          </div>
 
         </div>
