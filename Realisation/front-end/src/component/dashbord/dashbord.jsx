@@ -30,36 +30,26 @@ class Dashbord extends React.Component{
              groupe: response.data.Groupe,
              ToutalApprenants: response.data.ToutalApprenants
              
-            })
-           
+            })      
         })
         axios.get("http://127.0.0.1:8000/api/anne_formation/"+cookies.get('idFormateur'))
         .then(response=>{
-            // console.log(response.data)
             this.setState({
-                Annee_scolaire: response.data,
-            //  ToutalApprenants: response.data.ToutalApprenants
-             
-            })
-           
-        })
-        
+                Annee_scolaire: response.data,             
+            })       
+        })     
     }
     
     Annee_scolaire=(e)=>{
-        // console.log(e.target.value)
         
         axios.get("http://127.0.0.1:8000/api/getGroupe/"+e.target.value)
         .then(response=>{
-            // console.log(response.data)
             this.setState({
                 groupe: response.data.Groupe,
                 ToutalApprenants: response.data.ToutalApprenant,
                 IdGroupe:e.target.value
-            })
-           
+            })         
         })
-
     }
 render(){
    
