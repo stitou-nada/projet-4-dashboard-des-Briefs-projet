@@ -42,11 +42,10 @@ render(){
         <div >
 
             {/*Selecte brief  */}
-           <center id="selecet"><select onChange={this.selectBrief}  id="select">
+           <center id="selecet">
+            <select onChange={this.selectBrief}  id="select">
             {this.state.ListBrief.map((value)=>
-            <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>
-              
-                
+            <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>  
              )}
              </select>
              </center>
