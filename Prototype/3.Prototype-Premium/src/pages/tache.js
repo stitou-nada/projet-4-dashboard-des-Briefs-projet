@@ -91,7 +91,7 @@ render(){
                {this.state.data.map((value)=>
                 <tr key={value.id}>
                     <td>{value.id}</td>
-                    <td>{value.Nom}</td>
+                    <td>{value.name}</td>
                     <td>
                         <button onClick={this.handleEdit.bind(this,value.id)} className='btn btn-warning'>Edit</button>
                         <button onClick={this.handleDelete.bind(this,value.id)} className='btn btn-danger'>Suprimer</button>

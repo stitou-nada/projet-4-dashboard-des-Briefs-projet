@@ -37,7 +37,7 @@ class tacheController extends Controller
     public function store(Request $request)
     {
         tache::create([
-            'Nom' => $request->nom,
+            'name' => $request->nom,
 
         ])->save();
     }
@@ -76,7 +76,7 @@ class tacheController extends Controller
     {
         tache::find($id)
         ->update([
-            'Nom' => $request->nom,
+            'name' => $request->nom,
 
         ]);
     }

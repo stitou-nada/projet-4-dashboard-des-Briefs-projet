@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('taches', function (Blueprint $table) {
+        Schema::create('tache', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
