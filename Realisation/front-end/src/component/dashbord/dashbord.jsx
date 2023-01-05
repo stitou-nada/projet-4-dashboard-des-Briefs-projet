@@ -13,7 +13,9 @@ class Dashbord extends React.Component{
    
     state={
         idFormateur:"",
-        groupe:[]
+        IdGroupe:"",
+        groupe:[],
+        Annee_scolaire:[]
     }
     
     componentDidMount(){
@@ -28,11 +30,26 @@ class Dashbord extends React.Component{
              groupe: response.data.Groupe,
              ToutalApprenants: response.data.ToutalApprenants
              
-            })
-           
+            })      
         })
-
-
+        axios.get("http://127.0.0.1:8000/api/anne_formation/"+cookies.get('idFormateur'))
+        .then(response=>{
+            this.setState({
+                Annee_scolaire: response.data,             
+            })       
+        })     
+    }
+    
+    Annee_scolaire=(e)=>{
+        
+        axios.get("http://127.0.0.1:8000/api/getGroupe/"+e.target.value)
+        .then(response=>{
+            this.setState({
+                groupe: response.data.Groupe,
+                ToutalApprenants: response.data.ToutalApprenant,
+                IdGroupe:e.target.value
+            })         
+        })
     }
 render(){
    
@@ -40,7 +57,16 @@ render(){
          
         <div>
             <h3 id="titre-tableau">Tableau de bord  d'état d'avancement</h3>
+            <center id=""><select onChange={this.Annee_scolaire} >
+            {this.state.Annee_scolaire.map((value)=>
+            <option key={ value.id} value={value.id}>  {value.Annee_scolaire}</option>
+              
+                
+             )}
+             </select>
+             </center>  
           <Container  >
+         
       <Navbar expand="lg" variant="light" bg="light"   >
         <Container id="size">           
           <Navbar.Brand  id="Brand" href="#"><img src={"img/groupe/"+ this.state.groupe.Logo}></img></Navbar.Brand>
@@ -54,16 +80,16 @@ render(){
             <div className="row">
          {/* Avancement de groupe */}
          <div className=" col-6">
-        <Groupe/>
+        <Groupe IdGroupe={this.state.IdGroupe} />
          </div>
          <div className="col-6" id="cadreApprenant">
             <h3 id="titreApprenant">Etat d'avencement des apprenants :</h3>
-           <Apprenants/>
+           <Apprenants  IdGroupe={this.state.IdGroupe}/>
          </div>
          {/* Avancement de brief */}
          <div className="col-6" id="cadreBrief">
             <h3 id="titreBrief">Etat d'avencement de brief :</h3>
-            <Brief />
+            <Brief   IdGroupe={this.state.IdGroupe}/>
          </div>
 
         </div>

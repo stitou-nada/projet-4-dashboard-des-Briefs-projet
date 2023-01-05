@@ -52,8 +52,10 @@
     color: rgb(24, 77, 101);
 }
 #titre-tableau{
+    display: flex;
+    justify-content: space-around;
     margin-top: 14px;
-    margin-left: 511px;
+    /* margin-left: 511px; */
     color: rgb(24, 77, 101);
     font-weight: bold;
 }

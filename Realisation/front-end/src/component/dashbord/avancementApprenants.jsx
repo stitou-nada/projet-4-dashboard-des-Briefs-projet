@@ -19,9 +19,6 @@ componentDidMount(){
 
        })
     })
-   
-
-
 }
 
 selectBrief=(e)=>{
@@ -32,28 +29,37 @@ selectBrief=(e)=>{
      })
   })
 
-
 }
 render(){
-
-
+// appré selectioner anné scolaire
+    if(this.props.IdGroupe){
+        const idGroupe= this.props.IdGroupe
+        axios.get("http://127.0.0.1:8000/api/AvancementApprenant/"+ idGroupe)
+        .then(response=>{
+            console.log(response.data)
+            this.setState({
+                ListBrief:response.data.ListBrief,
+                brief:response.data.avancemantBrief
+        })
+        })
+    
+    }
 
     return(
         <div >
 
             {/*Selecte brief  */}
-           <center id="selecet"><select onChange={this.selectBrief}  id="select">
+           <center id="selecet">
+            <select onChange={this.selectBrief}  id="select">
             {this.state.ListBrief.map((value)=>
-            <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>
-              
-                
+            <option key={ value.id} value={ value.id}>  {value.Nom_du_brief}</option>  
              )}
              </select>
              </center>
             {/* Liste apprenant */}
               {this.state.brief.map((value)=>
-              <div id="DivChart-App">
-                <p key={Math.random()}>{value.Prenom} {value.Nom} </p>
+              <div key={Math.random()} id="DivChart-App">
+                <p >{value.Prenom} {value.Nom} </p>
         
               <div className="progress" id="ChartApprenant" > 
              <div className="progress-App" role="progressbar" style={{width:value.Percentage + "%" }}  
