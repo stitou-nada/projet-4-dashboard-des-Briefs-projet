@@ -7,8 +7,7 @@ class Tache extends React.Component {
 
     state={
         data:[],
-        nom:'',
-        shoNom:''
+        name:'',
        
     }
     componentDidMount(){
@@ -20,7 +19,7 @@ class Tache extends React.Component {
     }
     handleChange=(e)=>{
        this.setState({
-        nom:e.target.value
+        name:e.target.value
        })
     }
     handleClick=(e)=>{
@@ -42,7 +41,7 @@ class Tache extends React.Component {
         .then(response=>
            this.setState({
                data: response.data,
-               nom:''
+               name:''
            }) )
        })
     }
@@ -54,7 +53,7 @@ class Tache extends React.Component {
        axios.get("http://127.0.0.1:8000/api/edit/"+id)
        .then(response=>{
         this.setState({
-            nom:response.data.Nom,
+            name:response.data.name,
             id:response.data.id
 
         })
@@ -71,7 +70,7 @@ class Tache extends React.Component {
         return(
             <div>
            <form>
-             Enter tache:<input value={this.state.nom} onChange={this.handleChange}></input>
+             Enter tache:<input value={this.state.name} onChange={this.handleChange}></input>
              <button className="btn btn-primary" onClick={this.handleClick} id="btnAjouter">ajouter</button>
              <button className="btn btn-warning" onClick={this.handleModifier} id="btnModifier" style={{display:"none"}}>modifier</button>
              
@@ -81,14 +80,14 @@ class Tache extends React.Component {
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nom</th>
+                    <th>name</th>
                 </tr>
                 </thead>
                 <tbody>
                   {this.state.data.map((value)=>
                     <tr key={value.id}>
                         <td>{value.id}</td>
-                        <td>{value.Nom}</td>
+                        <td>{value.name}</td>
                         <td>
                             <button className="btn btn-warning" onClick={this.handleEdit.bind(this,value.id)}>Edit</button>
                             <button className="btn btn-danger" onClick={this.handleDelete.bind(this,value.id)}>Supprimer</button>
